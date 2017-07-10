@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Association 1 </title>
+  </head>
+  <body>
+<br>
+<h1>Editing:</h1>
+<h1><%= panggilData[0].username %></h1>
+
+<form action="/profiles/edit/<%= panggilData[0].id %>" method="post">
+  USERNAME:
+  <input type="text" name="username" value='<%= panggilData[0].username %>'><br>
+  PASSWORD:
+  <input type="text" name="password" value='<%= panggilData[0].password %>'><br>
+  <button type="submit">Submit Editing</button>
+</form>
+
+</body>
+</html>

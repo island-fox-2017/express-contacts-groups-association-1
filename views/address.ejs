@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='style.css' />
+    <title> Association 1 </title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+            <th> Street </th>
+            <th> City </th>
+            <th> Zip Code </th>
+              <th> Contact Id </th>
+                <th>Action</th>
+          </tr>
+        </thead>
+
+      <tbody>
+        <% panggilData.forEach(function(address) { %>
+      <tr>
+      <th> <%= address.id %> </th>
+      <th> <%= address.street %> </th>
+      <th> <%= address.city %> </th>
+      <th> <%= address.zip_code %> </th>
+      <th> <%= address.ContactId %> </th>
+      <th><a href="/addresses/edit/<%= address.id %>">Edit</a></th>
+      <th> <a href="/addresses/delete/<%= address.id %>">Delete</a> </th>
+      </tr>
+          <%  }) %>
+      </tbody>
+    <table>
+<br>
+<br>
+<br>
+
+      <form action="/addresses" method="post">
+            STREET:
+        <input type="text" name="street" placeholder="your username"><br>
+            CITY:
+        <input type="text" name="city" placeholder="your password"><br>
+        ZIP CODE:
+    <input type="text" name="zip_code" placeholder="input zip code"><br>
+    <select name = "ContactId">
+        <option value "">SELECT Contact:       </option>
+        <% panggilDataDropdown.forEach( contact => { %>
+        <option value ="<%= contact.id %>">
+        <%= contact.first_name %>
+        </option>
+        <% }) %>
+    </select>
+        <button type="submit"> submit </button>
+      </form>
+        </body>
+      </html>

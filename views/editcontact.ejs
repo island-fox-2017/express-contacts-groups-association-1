@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Association 1 </title>
+  </head>
+  <body>
+<br>
+<h1>Editing:</h1>
+<h1><%= panggilData[0].first_name %></h1>
+
+<form action="/contacts/edit/<%= panggilData[0].id %>" method="post">
+  First Name:
+  <input type="text" name="first_name" value='<%= panggilData[0].first_name %>'><br>
+  LAST NAME:
+  <input type="text" name="last_name" value='<%= panggilData[0].last_name %>'><br>
+  <button type="submit">Submit Editing</button>
+</form>
+
+</body>
+</html>

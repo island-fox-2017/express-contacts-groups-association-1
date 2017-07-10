@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='style.css' />
+    <title> Association 1 </title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+            <th> Name Of Group </th>
+            <th> first_name contact </th>
+            <th> last_name contact </th>
+          <th> Action </th>
+          </tr>
+        </thead>
+      <tbody>
+        <% panggilData.forEach(function(group) { %>
+      <tr>
+      <th> <%= group.id %> </th>
+      <th> <%= group.name_of_group %> </th>
+      <th> <%= group.first_name %> </th>
+      <th> <%= group.last_name %> </th>
+      <th><a href="/groups/edit/<%= group.id %>">Edit</a></th>
+      <th> <a href="/groups/delete/<%= group.id %>">Delete</a> </th>
+      </tr>
+        <%  }) %>
+      </tbody>
+    <table>
+<br>
+<br>
+<br>
+      <form action="/groups" method="post">
+            Name Of Group:
+        <input type="text" name="name_of_group" placeholder="your group name"><br>
+        <button type="submit"> submit </button>
+      </form>
+        </body>
+      </html>

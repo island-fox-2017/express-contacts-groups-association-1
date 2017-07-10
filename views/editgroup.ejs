@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>  Association 1 </title>
+  </head>
+  <body>
+
+<br>
+<h1>Editing:</h1>
+<h1><%= panggilData[0].name_of_group %></h1>
+
+<form action="/groups/edit/:<%= panggilData[0].id %>" method="post">
+  Name Of Group:
+  <input type="text" name="name_of_group" value='<%= panggilData[0].name_of_group %>'><br>
+  <button type="submit">Submit Editing</button>
+</form>
+
+</body>
+</html>
