@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+</style>
+  </head>
+  <body>
+    <h1> Data Profiles </h1>
+    <br>
+    <table>
+      <tr>
+        <th>No</th>
+        <th>UsernameInstagram</th>
+        <th>UsernameGoogle</th>
+        <th>Contact_id</th>
+        <th>Edit</th>
+        <th>Dlete</th>
+        <th>Show</th>
+      </tr>
+    <% var i = 1 %>
+    <% isiProfile.forEach(function(profile) { %>
+       <tr>
+        <td><%= i %> <% i+=1 %></td>
+        <td><%= profile.username %></td>
+        <td><%= profile.password %></td>
+        <td><%= profile.contact_id %></td>
+        <td><a href="/profiles/editprofiles/<%= profile.id%>">Edit</a></td>
+        <td><a href="/profiles/deleteProfiles/<%= profile.id%>">Delete</td>
+        <td><a href="/profiles/showContact/<%= profile.contact_id%>">Show</td>
+      </tr>
+    <% }) %>
+    </table>
+    <br>
+    <br>
+  <form action="/profiles" method="post">
+    InstagramAccount  :        <br><input type="text" name="Name" ><br>
+    GoogleAccount     :     <br><input type="text" name="Password" ><br>
+    <!-- Contact_id:     <br><input type="text" name="Contactid" ><br> -->
+    <select name="Contactid">
+    <%isiProfile2.forEach(function(contact){ %>
+      <option value = '<%= contact.id%>'><%= contact.nama %> </option>
+
+    <% }) %>
+    </select>
+    <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

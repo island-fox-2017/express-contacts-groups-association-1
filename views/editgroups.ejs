@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Groups</title>
+      <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+      </style>
+  </head>
+  <body>
+    <h1>Edit Data Groups </h1>
+    <% tabelGroups.forEach(function(edit){ %>
+        <form action="/groups/editGroups/<%=edit.id%>" method="post">
+        Name:        <br><input type="text" name="Name" value = "<%= edit.name_of_group %>"><br>
+        <input type="submit" value="Submit">
+        </form>
+    <% }) %>
+  </body>
+</html>

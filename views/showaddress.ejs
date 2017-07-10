@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+</style>
+  </head>
+  <body>
+    <h1> Data Address dari contacts</h1>
+    <br>
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>Province</th>
+        <th>Zip_code</th>
+        <th>Contact_id</th>
+      </tr>
+    <% var i = 1 %>
+    <% isiAddress.forEach(function(address) { %>
+       <tr>
+        <td><%= i %> <% i+=1 %></td>
+        <td><%= address.street %></td>
+        <td><%= address.city %></td>
+        <td><%= address.province %></td>
+        <td><%= address.zip_code %></td>
+        <td><%= address.contact_id %></td>
+      </tr>
+    <% }) %>
+    </table>
+    <br>
+    <br>
+  </body>
+</html>

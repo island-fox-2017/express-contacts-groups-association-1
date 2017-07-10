@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contacts</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+<h1> Data Contacts </h1>
+<table>
+  <tr>
+    <th>Nomor</th>
+    <th>Nama</th>
+    <th>Company</th>
+    <th>Telp_Number</th>
+    <th>Email</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    <th>Show address</th>
+
+  </tr>
+<% var i = 1 %>
+<% pesan.forEach(function(contact) { %>
+   <tr>
+    <td><%= i %> <% i+=1 %></td>
+    <td><%= contact.nama %></td>
+    <td><%= contact.company %></td>
+    <td><%= contact.telp_number %></td>
+    <td><%= contact.email %></td>
+    <td><a href="/contact/edit/<%= contact.id %>">Edit</a></td>
+    <td><a href="/contact/delete/<%= contact.id %>">Delete</td>
+    <td><a href="/contact/showaddress/<%= contact.id %>">Show it</td>
+  </tr>
+<% }) %>
+</table>
+<br>
+<br>
+<form action="/contact" method="post">
+Name:        <br><input type="text" name="Name" ><br>
+Company:     <br><input type="text" name="Company" ><br>
+Telp_Number: <br><input type="text" name="Telp_number" ><br>
+Email:       <br><input type="text" name="Email" ><br>
+<input type="submit" value="Submit">
+</form>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>Edit Data Contacts </h1>
+
+    <% data.forEach(function(edit){ %>
+        <form action="/contact/edit/<%=edit.id%>" method="post">
+        Name:        <br><input type="text" name="Name" value = "<%=edit.nama%>"><br>
+        Company:     <br><input type="text" name="Company" value = "<%=edit.company%>" ><br>
+        Telp_Number: <br><input type="text" name="Telp_number" value = "<%=edit.telp_number%>" ><br>
+        Email:       <br><input type="text" name="Email" value = "<%=edit.email%>" ><br>
+        <input type="submit" value="Submit">
+        </form>
+    <% }) %>
+
+  </body>
+</html>

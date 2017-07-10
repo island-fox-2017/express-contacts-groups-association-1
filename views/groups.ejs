@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Groups</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+</style>
+  </head>
+  <body>
+    <h1> Data Groups </h1>
+    <table>
+      <tr>
+        <th>Nomor</th>
+        <th>Nama</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    <% var i = 1 %>
+    <% tabelGroups.forEach(function(groups) { %>
+       <tr>
+        <td><%= i %> <% i+=1 %></td>
+        <td><%= groups.name_of_group %></td>
+        <td><a href="/groups/editgroups/<%= groups.id %>">Edit</a></td>
+        <td><a href="/groups/delete/<%= groups.id %>">Delete</td>
+       </tr>
+    <% }) %>
+    </table>
+    <br>
+    <br>
+    <form action="/groups" method="post">
+    Group Name :        <br><input type="text" name="Name" ><br>
+    <input type="submit" value="Submit">
+    </form>
+
+  </body>
+</html>
