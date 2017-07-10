@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table>
+    
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Company</th>
+          <th>Phone Number</th>
+          <th>E-Mail</th>
+          <th>Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data_contact.forEach(contact => { %>
+        <tr>
+          <td><%= contact.id %></td>
+          <td><%= contact.name%></td>
+          <td><%= contact.company%></td>
+          <td><%= contact.telp_number%></td>
+          <td><%= contact.email%></td>
+          <td><a href="/contacts/edit/<%=contact.id%>">Edit</a> || <a href="/contacts/delete/<%=contact.id%>" onclick="return confirm('Are you sure you want to delete this data?');">Delete</a></td>
+        </tr>
+        <% })%>
+      </tbody>
+    </table>
+      
+    <form action="/contacts" method="post">
+      <br><br>
+      Name : <input type="text" name="saveName" value="">
+      Company : <input type="text" name="saveCompany" value="">
+      Phone Number : <input type="text" name="savePhone" value="">
+      Email : <input type="text" name="saveEmail" value="">
+      <button type="submit" name="">Submit</button>
+    </form>
+  </body>
+</html>

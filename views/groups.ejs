@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Group</title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name of Group</th>
+          <th>Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data_group.forEach(data => { %>
+        <tr>
+          <td><%= data.id%></td>
+          <td><%= data.name_of_group%></td>
+          <td><a href="/groups/edit/<%=data.id%>">Edit</a> || <a href="/groups/delete/<%=data.id%>" onclick="return confirm('Are you sure want to delete this group?');">Delete</a></td>
+        </tr>
+        <% })%>
+      </tbody>
+    </table>
+    <form action="/groups" method="post">
+      Group Name : <input type="text" name="saveNameGroup" value="">
+      <button type="submit" name="button">Save</button>
+    </form>
+  </body>
+</html>

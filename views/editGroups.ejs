@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p>Update Group</p>
+    <% dataGroup.forEach(data => { %>
+      
+    <form action="/groups/edit/<%=data.id%>" method="post">
+      <br><br>
+      Group Name: <input type="text" name="saveNameGroup" value="<%= data.name_of_group%>">
+      <button type="submit" name="button">Update</button>
+    </form>
+    <% })%>
+  </body>
+</html>

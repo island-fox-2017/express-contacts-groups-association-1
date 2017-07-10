@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p>Update Contact</p>
+    <% dataContact.forEach(contact => { %>
+      
+    <form action="/contacts/edit/<%=contact.id%>" method="post">
+      <br><br>
+      
+      Name : <input type="text" name="saveName" value="<%= contact.name%>">
+      Company : <input type="text" name="saveCompany" value="<%= contact.company%>">
+      Phone Number : <input type="text" name="savePhone" value="<%= contact.telp_number%>">
+      Email : <input type="text" name="saveEmail" value="<%= contact.email%>">
+      <button type="submit" name="">Update</button>
+    </form>
+    <% })%>
+    
+
+  </body>
+</html>
