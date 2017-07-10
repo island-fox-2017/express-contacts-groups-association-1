@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+
+  </style>
+  <title>Contact address</title>
+  </head>
+
+  <body>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Street</th>
+      <th>Province</th>
+      <th>City</th>
+      <th>ZIP Code</th>
+    </tr>
+    <% dataAddress.forEach( add =>{%>
+    <tr>
+      <td><%= add.id %></td>
+      <td><%= add.street %></td>
+      <td><%= add.city %></td>
+      <td><%= add.province %></td>
+      <td><%= add.zipcodes %></td>
+      </tr>
+      <%})%>
+    </table>
+    </form>
+  </body>
+</html>

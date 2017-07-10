@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Address Page</title>
+    </head>
+
+    <body>
+    <form action="/addresses/edit/<%=dataAddress[0].id%" method="POST">
+      <p>Street Name :</p>
+      <input type="text" name="street" value="<%=dataAddress[0].street %>" >
+      <p>City :</p>
+      <input type="text" name="city" value="<%=dataAddress[0].city %>" >
+      <p>Province :</p>
+      <input type="text" name="province" value="<%=dataAddress[0].province %>">
+      <p>ZIP Code :</p>
+      <input type="text" name="zipcodes" value="<%=dataAddress[0].zipcodes %>">
+      <p>Contact ID:</p>
+      <select name = "contact_id">
+        <option value "">
+          -- Select ID Contact --
+        </option>
+          <% dataCon.forEach( cont => { %>
+        <option value ="<%= cont.id %>">
+          <%= cont.name %>
+        </option>
+      <% }) %>
+      </select>
+      <input type="submit" value="Submit">
+    </form>
+
+  </body>
+</html>

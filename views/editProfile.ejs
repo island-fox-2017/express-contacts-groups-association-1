@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Groups</title>
+  </head>
+  <body>
+    <div class="form_data">
+        <h3>Edit Profile</h3>
+        <form class="" action="/profile/edit/<%=dataprofile[0].id%>" method="post">
+          <p>Edit Nickname :</p>
+          <input type="text" name="nickname" value="<%=dataprofile[0].username%>" >
+          <p>Tell me your age :</p>
+          <input type="text" name="age_profile" value="<%=dataprofile[0].age%>">
+          <p>Contact_id:  </p>
+          <select name = "contact_id" >
+             <option value = "<%=dataprofile[0].contact_id %>" selected> <%=dataCon[(dataprofile[0].contact_id-1)].name %>
+             </option>
+             <% dataCon.forEach( cont => { %>
+             <option value ="<%= cont.id %>">
+             <%= cont.name %>
+             </option>
+             <% }) %>
+          </select><br>
+          <button type="submit" name="button">Submit</button>
+        </form>
+    </div>
+  </body>
+</html>

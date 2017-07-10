@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PROFILE PAGE</title>
+  </head>
+  <body>
+    <h2>Data Profile</h2>
+
+    <div class="form_data">
+        <h3>Tambah Profile</h3>
+        <form class="" action="/profile" method="post">
+          <p>Input your nickname :</p>
+          <input type="text" name="nickname" >
+          <p>Tell me your age :</p>
+          <input type="text" name="age_profile">
+          <p>Kontak ID : </p>
+          <select name = "contact_id">
+              <option value "">
+                -- Choose ID Contact --
+              </option>
+
+              <% dataCont.forEach( cont => { %>
+              <option value ="<%= cont.id %>">
+                <%= cont.name %>
+              </option>
+              <% }) %>
+          </select>
+          <!-- <input type="text" name="contacts_id"><br> -->
+          <br>
+          <button type="submit" name="button">Submit</button>
+        </form>
+    </div>
+
+    <div class="table_data">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nickname</th>
+              <th>Age</th>
+              <th>Contact ID</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% prf.forEach(profile => { %>
+              <tr>
+                <td> <%= profile.id %></td>
+                <td> <%= profile.username %></td>
+                <td> <%= profile.age %></td>
+                <td> <%= profile.contact_id %></td>
+                <td> <a href="/profile/edit/<%= profile.id%>">Edit</a> <a href="/profile/delete/<%= profile.id%>">Delete</a>  <a href="/profile/<%= profile.contact_id%>/contact_detail">Contact</a></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Address Page</title>
+    </head>
+
+    <body>
+    <h2>Tambahkan address</h2>
+    <form action="/addresses" method="POST">
+      <p>Street Name :</p>
+      <input type="text" name="street" >
+      <p>City :</p>
+      <input type="text" name="city" >
+      <p>Province :</p>
+      <input type="text" name="province" >
+      <p>ZIP Code :</p>
+      <input type="text" name="zipcodes">
+      <p>Contact ID:</p>
+      <select name = "contact_id">
+        <option value "">
+          -- Select ID Contact --
+        </option>
+          <% dataCon.forEach( cont => { %>
+        <option value ="<%= cont.id %>">
+          <%= cont.name %>
+        </option>
+      <% }) %>
+      </select>
+      <input type="submit" value="Submit">
+    </form>
+
+    <h3>Data address</h3>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>ZIP code</th>
+        <th>Contact_id</th>
+        <th>Action</th>
+      </tr>
+      <% dataAddress.forEach(ad =>{%>
+      <tr>
+        <td><%= ad.id %></td>
+        <td><%= ad.street %></td>
+        <td><%= ad.city %></td>
+        <td><%= ad.province %></td>
+        <td><%= ad.zipcodes %></td>
+        <td><%= ad.contact_id %></td>
+        <td><a href="/addresses/edit/<%= ad.id %>">EDIT</a> <a href="/addresses/delete/<%= ad.id %>">DELETE</a> <a href="/addresses/<%= ad.contact_id%>/address_detail">Show Address</a></td>
+        </tr>
+        <%})%>
+      </table>
+
+  </body>
+</html>
