@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>addresses</title>
+    <title>show address from contact</title>
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <!-- <%= JSON.stringify(data_address) %> -->
+    <!-- <%= JSON.stringify(show_address) %> -->
     <form class="" action="addAddress" method="POST">
       <a href="/"><input type="button" value="HOME"></a>      
       <input type="submit" name="" value="ADD NEW ADDRESS">
@@ -25,7 +25,7 @@
         <th class="action" colspan="2">ACTION</th>
       </tr>
       
-      <% data_address.forEach(address => { %>
+      <% show_address.forEach(address => { %>        
       <tr style="tr">
         <td style="td"><%= address.id %></td>
         <td style="td"><%= address.street %></td>

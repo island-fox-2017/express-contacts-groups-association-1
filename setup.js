@@ -20,7 +20,8 @@ function createTable () {
   db.run(`CREATE TABLE IF NOT EXISTS profiles (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username text,
-            password text,
+            facebook_username text,
+            google_username text,
             contacts_id INTEGER )`
           );
   console.log('TABLE profiles SUCCESFULLY CREATED');

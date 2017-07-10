@@ -24,13 +24,13 @@ app.get('/contacts', function(req, res) {
   })  
 })
 
+app.post('/addContact', function(req, res) {
+  res.render('contact_add')
+})
+
 app.post('/contacts', function(req, res) {
   db.run(`INSERT INTO contacts (name, company, telp_number, email) VALUES ('${req.body.nama}', '${req.body.company}', '${req.body.phone}', '${req.body.email}')`)
   res.redirect('/contacts')
-})
-
-app.post('/addContact', function(req, res) {
-  res.render('contact_add')
 })
 
 app.get('/contacts/edit/:id', function(req, res) {
@@ -56,13 +56,13 @@ app.get('/groups', function(req,res) {
   })  
 })
 
+app.post('/addgroup', function(req, res) {
+  res.render('group_add', {})
+})
+
 app.post('/groups', function(req, res) {
   db.run(`INSERT INTO groups (name_of_group) VALUES ('${req.body.nama}')`)
   res.redirect('/groups')
-})
-
-app.post('/addgroup', function(req, res) {
-  res.render('group_add', {})
 })
 
 app.get('/groups/edit/:id', function(req, res) {
@@ -83,8 +83,16 @@ app.get('/groups/delete/:id', function(req, res) {
 
 // ADDRESSES
 app.get('/addresses', function(req, res) {
-  db.all("SELECT * FROM addresses", function(err, rows) {
+  db.all(`SELECT addresses.id, addresses.street, addresses.city, addresses.zipcode, 
+          addresses.contacts_id, contacts.name
+    FROM addresses JOIN contacts ON addresses.contacts_id = contacts.id`, function(err, rows) {
     res.render('addresses', {data_address : rows})
+  })
+})
+
+app.post('/addAddress', function(req,res) {
+  db.all(`SELECT * FROM contacts`, function(err, rows) {
+    res.render('address_add', {name_contact : rows})
   })
 })
 
@@ -93,13 +101,11 @@ app.post('/addresses', function(req, res) {
   res.redirect('/addresses')
 })
 
-app.post('/addAddress', function(req,res) {
-  res.render('address_add')
-})
-
 app.get('/addresses/edit/:id', function(req, res) {
-  db.all(`SELECT * FROM addresses WHERE id = ${req.params.id}`, function(err, rows) {
-    res.render('address_edit', {data_address : rows})
+  db.all(`SELECT * FROM contacts`, function(err, rows1){
+    db.all(`SELECT * FROM addresses WHERE id = ${req.params.id}`, function(err, rows2) {
+      res.render('address_edit', {name_contact : rows1, data_address : rows2})
+    })
   })
 })
 
@@ -111,6 +117,56 @@ app.post('/addresses/edit/:id', function(req, res) {
 app.get('/addresses/delete/:id', function(req, res) {
   db.run(`DELETE FROM addresses WHERE id = '${req.params.id}'`)
   res.redirect('/addresses')
+})
+
+app.get('/addresses/:id', function(req, res) {
+  db.all(`SELECT addresses.id, addresses.street, addresses.city, addresses.zipcode, addresses.contacts_id,
+          contacts.name, contacts.company, contacts.telp_number, contacts.email 
+    FROM addresses JOIN contacts 
+    ON addresses.contacts_id = contacts.id 
+    WHERE addresses.contacts_id = '${req.params.id}'`, function(err, rows) {
+    res.render('address_show', {show_address : rows})    
+  })
+})
+
+// PROFILES
+app.get('/profiles', function(req, res) {
+  db.all(`SELECT profiles.id, profiles.username, profiles.facebook_username, profiles.google_username, profiles.contacts_id,
+          contacts.name, contacts.company, contacts.telp_number, contacts.email
+    FROM profiles JOIN contacts 
+    ON profiles.contacts_id = contacts.id`, function(err, rows) {
+    res.render('profiles', {data_profile : rows})
+  })
+})
+
+app.post('/addProfiles', function(req, res) {
+  db.all(`SELECT * FROM contacts`, function(err, rows) {
+    res.render('profile_add', {name_contact : rows})
+  })
+})
+
+app.post('/profiles', function(req, res) {
+  db.run(`INSERT INTO profiles (username, facebook_username, google_username, contacts_id) 
+  VALUES ('${req.body.username}', '${req.body.facebook}', '${req.body.google}', '${req.body.contacts_id}')`)
+  res.redirect('/profiles')
+})
+
+app.get('/profiles/edit/:id', function(req, res) {
+  db.all(`SELECT * FROM contacts`, function(err, rows1) {
+    db.all(`SELECT * FROM profiles WHERE id = '${req.params.id}'`, function(err, rows2) {
+      res.render('profile_edit', {name_contact: rows1, data_profile : rows2})
+    })
+  })
+})
+
+app.post('/profiles/edit/:id', function(req, res) {
+  db.run(`UPDATE profiles SET username = '${req.body.username}', facebook_username = '${req.body.facebook}', google_username = '${req.body.google}', contacts_id = '${req.body.contacts_id}' WHERE id = '${req.params.id}'`)
+  res.redirect('/profiles')
+})
+
+app.get('/profiles/delete/:id', function(req, res) {
+  db.run(`DELETE FROM profiles WHERE id = '${req.params.id}'`)
+  res.redirect('/profiles')
 })
 
 app.listen(3000)

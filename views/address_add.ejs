@@ -15,8 +15,13 @@
         <b>Zip Code : </b></br>
         <input type="text" name="zipcode" value=""> <br><br>
         <b>Contacts ID : <b></br>
-        <input type="text" name="contacts_id" value=""> <br><br>
-        
+        <!-- <input type="text" name="contacts_id" value=""> <br><br> -->
+        <select class="" name="contacts_id">
+          <% name_contact.forEach(contact => { %>            
+          <option value="<%= contact.id %>"><%= contact.name %></option>
+          <% }) %>
+        </select>
+        <br><br>
         <input type="submit" name="" value="SUBMIT">
       </fieldset>
     </form>
