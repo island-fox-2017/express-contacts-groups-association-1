@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <center>
+    <h1>Address EDIT FORM</h1><br><br>
+    <form action="/address/edit/<%=dataAdd[0].id%>" method="POST">
+    Street:<br>
+    <input type="text" name="StreetEjs" value="<%=dataAdd[0].Street %>">
+     <br> City:   <br>
+    <input type="text" name="CityEjs" value="<%=dataAdd[0].City %>">
+    <br> ZIP Code:   <br>
+   <input type="text" name="ZIPcodeEjs" value="<%=dataAdd[0].ZIPcode %>">
+     <br> Contact_id:   <br>
+
+    <select name = "Contact_idEjs" >
+    <option value = "<%=dataAdd[0].Contact_id %>" selected> <%=dataCon[(dataAdd[0].Contact_id-1)].Name %>
+    </option>
+    <% dataCon.forEach( cont => { %>
+    <option value ="<%= cont.id %>">
+    <%= cont.Name %>
+    </option>
+    <% }) %>
+    </select>
+
+    <br><br>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+  </center>
+  </body>
+</html>
