@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Group</title>
+  </head>
+  <!-- <link rel="stylesheet" href="/style.css"> -->
+  <!-- <link rel="stylesheet" href="/sesuatu.css"> -->
+  <body>
+    <center>
+      <h1>GROUP</h1>
+    <table border="1" style="width:30%">
+      <tr>
+        <th>No.id</th>
+        <th>Group</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <%var i = 1%>
+      <%allG.forEach(function(isi){ %>
+      <tr>
+        <td><%=i%><%i+=1%></td>
+        <td><%=isi.name_of_group%></td>
+        <td> <a href="/group/edit/<%= isi.id%>">Edit</a> </td>
+        <td> <a href="/group/deleteG/<%= isi.id%>">Delete</a> </td>
+      </tr>
+    <%})%>
+    </table>
+    <br>
+    <form action="/group" method="post">
+        Group :<br>
+        <input type="text" name="group" value="">
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+      <br><br>
+      <a href="/"><b>Home</b></a>
+    </center>
+
+
+  </body>
+</html>
