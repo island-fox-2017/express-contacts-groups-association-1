@@ -1,0 +1,33 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/style.css" ></link>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Company</th>
+      <th>Telephone Number</th>
+      <th>Email</th>
+      <th bgcolor="green">Street</th>
+      <th bgcolor="green">City</th>
+      <th bgcolor="green">Zip Code</th>
+    </tr>
+    <% datas.forEach(i => { %>
+    <tr>
+      <th><%= i.id %></th>
+      <th><%= i.name %></th>
+      <th><%= i.company %></th>
+      <th><%= i.telp_number %></th>
+      <th><%= i.email %></th>
+      <th><%= i.street %></th>
+      <th><%= i.city %></th>
+      <th><%= i.zip_code %></th>
+    </tr>
+    <% }) %>
+  </table>
+  <h2><a href="/contacts">Back</a></h2>
+  <h2><a href="/">Home</a></h2>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/style.css" ></link>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Contacts ID</th>
+      <th>Groups ID</th>
+      <th>Delete</th>
+    </tr>
+    <% datas.forEach(i => { %>
+    <tr>
+      <th><%= i.id %></th>
+      <th><%= i.contact_id %></th>
+      <th><%= i.group_id %></th>
+      <th><a href=/groups/delete/<%= i.id %>>Delete</a></th>
+    </tr>
+    <% }) %>
+  </table>
+  <form action="/contacts-groups" method="post">
+    <input type="text" name="contact_id" placeholder="Input Your Contact Here">
+    <input type="text" name="group_id" placeholder="Input Your Group Here">
+    <input type="submit" value="Submit">
+  </form>
+  <h2><a href="/">Home</a></h2>
+</body>
+</html>

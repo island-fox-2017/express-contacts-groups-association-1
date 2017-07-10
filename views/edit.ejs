@@ -1,0 +1,16 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/style.css" ></link>
+</head>
+<body>
+  <form action="/contacts/edit/:id" method="post">
+    <input type="number" name="id" placeholder="Input Your Name Here" value="<%= data[0].id %>">
+    <input type="text" name="name" placeholder="Input Your Name Here" value="<%= data[0].name %>">
+    <input type="text" name="company" placeholder="Input Your Address Here" value="<%= data[0].company %>">
+    <input type="text" name="telp_number" placeholder="Input Your Telephone Number Here" value="<%= data[0].telp_number %>">
+    <input type="text" name="email" placeholder="Input Your Email Here" value="<%= data[0].email %>">
+    <input type="submit" value="Submit">
+  </form>
+  <h2><a href="/">Home</a></h2>
+</body>
+</html>

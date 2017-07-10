@@ -1,0 +1,30 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/style.css" ></link>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name of Group</th>
+      <th>Contacts Names</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <% datas.forEach(i => { %>
+    <tr>
+      <th><%= i.id %></th>
+      <th><%= i.name_of_group %></th>
+      <th><%= i.name %></th>
+      <th><a href=/groups/edit/<%= i.id %>>Edit</a></th>
+      <th><a href=/groups/delete/<%= i.id %>>Delete</a></th>
+    </tr>
+    <% }) %>
+  </table>
+  <form action="/groups" method="post">
+    <input type="text" name="name_of_group" placeholder="Input Your Group Here">
+    <input type="submit" value="Submit">
+  </form>
+  <h2><a href="/">Home</a></h2>
+</body>
+</html>
