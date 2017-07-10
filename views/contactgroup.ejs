@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Group Page</title>
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  </head>
+  <body>
+    <h1><i class="fa fa-address-book"> My Contact Group </i></h1>
+    <button id="btn-start"><i class="fa fa-plus"> Add</i></button>
+    <button id="btn-start" onclick="window.location='/'"><i class="fa fa-arrow-left"> Back</i></button>
+
+    <div id="div1" class="modal">
+      <form id="main-form" class="modal-content animate" name="mainForm" action="/contactgroup" method="post">
+        <div class="container">
+          <label><b>ID Contact</b></label>
+          <select name="selectIdContact">
+            <option value="">--Select ID Contact--</option>
+            <% data2.forEach(function(d2){ %>
+            <option value="<%= d2.id %>"><%= d2.id %> <%= d2.long_name %></option>
+            <% }) %>
+          </select>
+          <label><b>ID Group</b></label>
+          <select name="selectIdGroup">
+            <option value="">--Select ID Group--</option>
+            <% data3.forEach(function(d3){ %>
+            <option value="<%= d3.id %>"><%= d3.id %> <%= d3.name_group %></option>
+            <% }) %>
+          </select>
+          <div class="clearfix">
+            <button id="cancelbtn" type="button" class="cancelbtn">Cancel</button>
+            <button type="submit" name="submit" value="submit" class="submitbtn">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div>
+      <table border="1">
+        <tr>
+          <th>ID</th>
+          <th>ID CONTACT</th>
+          <th>CONTACT NAME</th>
+          <th>ID GROUP</th>
+          <th>GROUP NAME</th>
+          <th>ACTION</th>
+        </tr>
+        <% data.forEach(d => {%>
+          <tr>
+            <td><%= d.contactgroupID %></td>
+            <td><%= d.contact_id %></td>
+            <td><%= d.long_name %></td>
+            <td><%= d.group_id %></td>
+            <td><%= d.group_name %></td>
+            <td><a href='contactgroup/edit/<%= d.id %>'><i class="fa fa-pencil"> Edit</i></a> || <a href='contactgroup/delete/<%= d.id %>'><i class="fa fa-eraser"> Delete</i></a></td>
+          </tr>
+        <% }) %>
+      </table>
+    </div>
+    <script src="/script.js"></script>
+  </body>
+</html>
