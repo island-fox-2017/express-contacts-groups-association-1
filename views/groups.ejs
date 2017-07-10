@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Groups</title>
+  </head>
+  <body>
+
+    <h1>Groups</h1>
+    <br>
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nama Group</th>
+      </tr>
+
+      <% for (var i = 0; i <= data.length - 1; i++) { %>
+        <tr>
+          <td> <%= data[i].groupsid %> </td>
+          <td> <%= data[i].name_of_group %> </td>
+          <td>
+            <a href="/groups/edit/<%= data[i].groupsid %>">Edit</a>
+            <a href="/groups/delete/<%= data[i].groupsid %>">Delete</a>
+          </td>
+        </tr>
+      <% } %>
+
+    </table>
+
+    <br>
+
+    <form class="" action="/groups" method="post">
+      <input type="text" name="name_of_group" value="" placeholder="Nama grup">
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+
+  </body>
+</html>

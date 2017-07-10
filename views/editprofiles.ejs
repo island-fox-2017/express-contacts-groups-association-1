@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Profiles <%= data[0].username %> <%= data[0].profiles %></title>
+  </head>
+  <body>
+
+    <h2>Edit Profiles with ID: <%= data[0].profilesid %>, <%= data[0].username %></h2>
+
+    <form class="" action="/profiles/edit/<%= data[0].profilesid %>" method="post">
+      <input type="text" name="username" value="<%= data[0].username %>">
+      <br>
+      <input type="text" name="password" value="<%= data[0].password %>">
+      <br>
+      <input type="text" name="profilecontact" value="<%= data[0].profilecontact %>">
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+
+    <select class="" name="" placeholder="Contacts">
+      <option value="">Test</option>
+    </select>
+
+  </body>
+</html>
