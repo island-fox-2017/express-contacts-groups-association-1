@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Addresses</title>
+  </head>
+  <body>
+
+    <h1>Addresses</h1>
+    <br>
+
+    <table>
+
+      <tr>
+        <th>ID</th>
+        <th>Jalan</th>
+        <th>Kota</th>
+        <th>Kode Pos</th>
+        <th>Nama</th>
+        <th>Company</th>
+        <th>No. Telp</th>
+        <th>E-mail</th>
+      </tr>
+
+      <% for (var i = 0; i <= table.length - 1; i++) { %>
+        <tr>
+          <td> <%= table[i].addressesid %> </td>
+          <td> <%= table[i].street %> </td>
+          <td> <%= table[i].city %> </td>
+          <td> <%= table[i].zip %> </td>
+          <td> <%= table[i].name %> </td>
+          <td> <%= table[i].company %> </td>
+          <td> <%= table[i].telp_number %> </td>
+          <td> <%= table[i].email %> </td>
+          <td>
+            <a href="/addresses/edit/<%= table[i].addressesid %>">Edit</a>
+            <a href="/addresses/delete/<%= table[i].addressesid %>">Delete</a>
+          </td>
+        </tr>
+      <% } %>
+
+    </table>
+
+    <br>
+
+    <form class="" action="/addresses" method="post">
+      <input type="text" name="street" value="" placeholder="Jalan">
+      <br>
+      <input type="text" name="city" value="" placeholder="Kota">
+      <br>
+      <input type="text" name="zip" value="" placeholder="Kode Pos">
+      <br>
+      <!-- <input type="text" name="addresscontact" value="" placeholder="Contact ID">
+      <br> -->
+      <select name="addresscontact">
+        <option>Choose contacts</option>
+        <% dropList.forEach(list => { %>
+          <option value="<%= list.contactsid %>"><%= list.name %></option>
+          <% }) %>
+      </select>
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+
+
+  </body>
+</html>

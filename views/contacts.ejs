@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contacts</title>
+  </head>
+  <body>
+
+    <h1>Contacts</h1>
+    <br>
+
+    <table>
+
+      <tr>
+        <th>ID</th>
+        <th>Nama</th>
+        <th>Perusahaan</th>
+        <th>Telepon</th>
+        <th>E-mail</th>
+      </tr>
+
+      <% for (var i = 0; i <= data.length - 1; i++) { %>
+        <tr>
+          <td> <%= data[i].contactsid %> </td>
+          <td> <%= data[i].name %> </td>
+          <td> <%= data[i].company %> </td>
+          <td> <%= data[i].telp_number %> </td>
+          <td> <%= data[i].email %> </td>
+          <td>
+            <a href="/contacts/edit/<%= data[i].contactsid %>">Edit</a>
+            <a href="/contacts/delete/<%= data[i].contactsid %>">Delete</a>
+          </td>
+        </tr>
+      <% } %>
+
+    </table>
+
+    <br>
+
+    <form class="" action="/contacts" method="post">
+      <input type="text" name="name" value="" placeholder="Nama">
+      <br>
+      <input type="text" name="company" value="" placeholder="Perusahaan">
+      <br>
+      <input type="text" name="telp_number" value="" placeholder="Nomor Telepon">
+      <br>
+      <input type="text" name="email" value="" placeholder="Email">
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Addresses</title>
+  </head>
+  <body>
+
+    <h2>Addresses</h2>
+    <br>
+
+    <form class="" action="/addresses/edit/<%= data[0].addressesid %>" method="post">
+      <input type="text" name="street" value="<%= data[0].street %>" placeholder="Jalan">
+      <br>
+      <input type="text" name="city" value="<%= data[0].city %>" placeholder="Kota">
+      <br>
+      <input type="text" name="zip" value="<%= data[0].zip %>" placeholder="Kode Pos">
+      <br>
+      <input type="text" name="addresscontact" value="<%= data[0].addresscontact %>" placeholder="Contact ID">
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+
+  </body>
+</html>
