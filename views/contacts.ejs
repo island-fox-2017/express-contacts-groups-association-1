@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='style.css' />
+    <title> Association 1 </title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+            <th> First Name </th>
+            <th> Last Name</th>
+            <th> Name Of Group </th>
+              <th> Action </th>
+          </tr>
+        </thead>
+
+      <tbody>
+        <% panggilData.forEach(function(contact) { %>
+      <tr>
+      <th> <%= contact.id %> </th>
+      <th> <%= contact.first_name %> </th>
+      <th> <%= contact.last_name %> </th>
+      <th> <%= contact.name_of_group %> </th>
+      <th><a href="/contacts/edit/<%= contact.id %>">Edit</a></th>
+      <th> <a href="/contacts/delete/<%= contact.id %>">Delete</a> </th>
+      <th> <a href="/contacts/addresses/<%= contact.id %>">Show Addresses</a> </th>
+      </tr>
+        <%  }) %>
+
+<br>
+        <% panggilDataAddress.forEach(function(address) { %>
+        <tr>
+        <th> <%= address.id %> </th>
+        <th> <%= address.street %> </th>
+        <th> <%= address.city %> </th>
+        <th> <%= address.zip_code %> </th>
+        </tr>
+        <%  }) %>
+      </tbody>
+    <table>
+<br>
+<br>
+<br>
+
+      <form action="/contacts" method="post">
+            First Name:
+        <input type="text" name="first_name" placeholder="your name"><br>
+            Last Name:
+        <input type="text" name="last_name" placeholder="your company"><br>
+        <button type="submit"> submit </button>
+      </form>
+        </body>
+      </html>

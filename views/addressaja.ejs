@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='style.css' />
+    <title> Association 1 </title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+            <th> Street </th>
+            <th> City </th>
+            <th> Zip Code </th>
+          </tr>
+        </thead>
+
+      <tbody>
+        <% panggilData.forEach(function(address) { %>
+      <tr>
+      <th> <%= address.id %> </th>
+      <th> <%= address.street %> </th>
+      <th> <%= address.city %> </th>
+      <th> <%= address.zip_code %> </th>
+      </tr>
+          <%  }) %>
+      </tbody>
+    <table>
+<br>
+<br>
+<br>
+        </body>
+      </html>

@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Association 1 </title>
+  </head>
+  <body>
+<br>
+<h1>Editing:</h1>
+<!-- <h1><%= panggilData[0].username %></h1> -->
+
+<form action="/addresses/edit/<%= panggilData[0].id %>" method="post">
+  STREET:
+  <input type="text" name="street" value='<%= panggilData[0].street %>'><br>
+  CITY:
+  <input type="text" name="city" value='<%= panggilData[0].city %>'><br>
+  ZIP CODE:
+  <input type="text" name="zip_code" value='<%= panggilData[0].zip_code %>'><br>
+  <button type="submit">Submit Editing</button>
+</form>
+
+</body>
+</html>

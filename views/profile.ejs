@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='style.css' />
+    <title> Association 1 </title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+            <th> User Name </th>
+            <th> Password</th>
+              <th> Contact Id </th>
+              <th> first_name dr contact</th>
+                <th> last_name dr contact</th>
+                <th>Action</th>
+          </tr>
+        </thead>
+
+      <tbody>
+        <% panggilData.forEach(function(profile) { %>
+      <tr>
+      <th> <%= profile.id %> </th>
+      <th> <%= profile.username %> </th>
+      <th> <%= profile.password %> </th>
+      <th> <%= profile.ContactId %> </th>
+      <th> <%= profile.first_name %> </th>
+      <th> <%= profile.last_name %> </th>
+      <th><a href="/profiles/edit/<%= profile.id %>">Edit</a></th>
+      <th> <a href="/profiles/delete/<%= profile.id %>">Delete</a> </th>
+      <th> <a href="/profiles/show_details/<%= profile.id %>">Show Details</a> </th>
+      </tr>
+          <%  }) %>
+      </tbody>
+    <table>
+<br>
+<br>
+<br>
+
+      <form action="/profiles" method="post">
+            USERNAME:
+        <input type="text" name="username" placeholder="your username"><br>
+            PASSWORD:
+        <input type="text" name="password" placeholder="your password"><br>
+        CONTACT ID:
+    <input type="text" name="ContactId" placeholder="input contact id"><br>
+        <button type="submit"> submit </button>
+      </form>
+        </body>
+      </html>
