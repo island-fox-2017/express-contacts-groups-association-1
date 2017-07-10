@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Contact Id</th>
+        <th>Action</th>
+      </tr>
+      <% datas.forEach( data => {%>
+      <tr>
+        <td><%= data.id%></td>
+        <td><%= data.username%></td>
+        <td><%= data.password%></td>
+        <td><%= data.contacts_id%></td>
+        <td><a class = 'button_2' href="profiles/delete/<%= data.id%>">Delete</a>||
+            <a class = 'button_2' href="profiles/edit/<%= data.id%>">Edit</a>||
+            <a class = 'button_2' href="profiles/details/<%= data.contacts_id%>">Details</a>
+        </td>
+      <%}) %>
+      </tr>
+    </table>
+    <form action="/profiles" method="post">
+      <input type="text" name="username" placeholder="Username">
+      <input type="text" name="password" placeholder="Password">
+      <select name="contacts_id">
+        <% data_contact.forEach( cont => {%>
+          <option value="<%= cont.id%>"><%= cont.name%></option>
+        <%})%>
+      </select>
+      <button class = 'button_3' type="submit" name="button">Submit</button>
+    </form>
+  </body>
+</html>

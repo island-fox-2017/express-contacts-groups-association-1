@@ -1,0 +1,12 @@
+<form action="/address/update/<%= datas[0].id %>" method="post">
+  <input type="text" name='street' value='<%= datas[0].street %>'>
+  <input type="text" name='city' value='<%= datas[0].city %>'>
+  <input type="text" name='zip_code' value='<%= datas[0].zip_code %>'>
+    <select name="contacts_id">
+      <option value="<%= datas[0].contacts_id%>"><%= data_contact[(datas[0].contacts_id-1)].name%></option>
+      <% data_contact.forEach( cont => {%>
+        <option value="<%= cont.id%>"><%= cont.name%></option>
+      <%})%>
+    </select>
+  <button type="submit">Submit</button>
+</form>
