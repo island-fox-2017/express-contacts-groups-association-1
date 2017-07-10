@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <center>
+    <h1>EDIT FORM</h1><br><br>
+    <form action="/contact/edit/<%=data[0].id%>" method="POST">
+    Name:<br>
+    <input type="text" name="Name" value="<%=data[0].Name %>">
+    <br><br>
+    Company:<br>
+    <input type="text" name="Company" value="<%=data[0].Company %>">
+    <br><br>
+    Telp:<br>
+    <input type="text" name="Telp" value="<%=data[0].Telp %>">
+    <br><br>
+    Email:<br>
+    <input type="text" name="Email" value="<%=data[0].Email %>">
+    <br><br>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+  </center>
+  </body>
+</html>

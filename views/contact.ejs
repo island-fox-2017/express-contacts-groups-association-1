@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    table {
+      font-family:Gill Sans Extrabold, sans-serif;
+      position: center;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 1px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+  <title>Contact</title>
+  </head>
+
+  <body>
+  <center><h3>CONTACT INFO</h3><center><br>
+  <a href="/contact/add"><button type="Submit" name="Add">Add New Contact</button></a>
+  <br><br>
+  <form action="/contact" method="POST">
+  <center>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Company</th>
+      <th>Telp</th>
+      <th>Email</th>
+      <th colspan='2'></th>
+    </tr>
+    <% data_contact.forEach(contact =>{%>
+    <tr>
+      <td><%= contact.id %></td>
+      <td><%= contact.Name %></td>
+      <td><%= contact.Company %></td>
+      <td><%= contact.Telp %></td>
+      <td><%= contact.Email %></td>
+      <td><a href="/contact/edit/<%= contact.id %>"><button type="button" name="Edit">EDIT</button></a></td>
+      <td><a href="/contact/delete/<%= contact.id %>"><button type="button" name="Delete">DELETE</button></a></td>
+      </tr>
+      <%})%>
+    </table>
+  </center>
+    </form>
+  </body>
+</html>

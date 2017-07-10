@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    table {
+      font-family:Gill Sans Extrabold, sans-serif;
+      position: center;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 1px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+  <title>Contact</title>
+  </head>
+
+  <body>
+  <center><h3>ADDRESS INFO</h3><center><br>
+  <a href="/address/add"><button type="Submit" name="Add">Add New Address</button></a>
+
+  <br><br>
+  <form action="/address" method="POST">
+  <center>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>Zip Code</th>
+      <th>Contact Id</th>
+
+      <th colspan='3'></th>
+    </tr>
+    <% dataAddress.forEach(dataAlamat =>{%>
+    <tr>
+      <td><%= dataAlamat.id %></td>
+      <td><%= dataAlamat.street %></td>
+      <td><%= dataAlamat.city %></td>
+      <td><%= dataAlamat.Contact_Id %></td>
+      
+      <%})%>
+    </table>
+  </center>
+    </form>
+  </body>
+</html>

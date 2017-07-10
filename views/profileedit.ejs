@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%=JSON.stringify(dataContact)%>
+  <center>
+    <h1>EDIT FORM</h1><br><br>
+    <form action="/profile/edit/<%=dataProfile[0].id%>" method="POST">
+    UserName:<br>
+    <input type="text" name="username" value="<%=dataProfile[0].Username %>">
+    <br><br>
+    Password:<br>
+    <input type="text" name="password" value="<%=dataProfile[0].Password %>">
+    <br><br>
+    Contact ID:<br>
+    <select name = "ContactID" >
+
+    <option value = "<%=dataProfile[0].Contact_Id %>" > <%= dataContact[(dataProfile[0].Contact_Id-1)].Name %></option>
+
+    <% dataContact.forEach( cont => { %>
+    <option value ="<%= cont.id %>"><%= cont.Name %></option>
+    <% }) %>
+
+  </select>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+  </center>
+  </body>
+</html>

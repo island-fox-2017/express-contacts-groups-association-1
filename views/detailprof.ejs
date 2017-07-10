@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    table {
+      font-family:Gill Sans Extrabold, sans-serif;
+      position: center;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 1px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+  <title>Contact</title>
+  </head>
+
+  <body>
+  <center><h3>DETAIL PROFILE INFO</h3><center><br>
+  <br><br>
+  <form action="/profile" method="POST">
+  <center>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Name</th>
+      <th>Company</th>
+      <th>Telp</th>
+      <th>Email</th>
+      <th colspan='2'></th>
+    </tr>
+    <% detailProf.forEach(detailprofiles =>{%>
+    <tr>
+      <td><%= detailprofiles.id %></td>
+      <td><%= detailprofiles.Username %></td>
+      <td><%= detailprofiles.Password %></td>
+      <td><%= detailprofiles.Name %></td>
+      <td><%= detailprofiles.Company %></td>
+      <td><%= detailprofiles.Telp %></td>
+      <td><%= detailprofiles.Email %></td>
+    </tr>
+      <%})%>
+    </table>
+  </center>
+    </form>
+  </body>
+</html>

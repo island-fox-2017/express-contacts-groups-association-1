@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PROFILE</title>
+  </head>
+  <body>
+  <center>
+    <h2>ADD PROFILE</h2><br><br>
+    <form action="/profile/add" method="POST">
+    UserName:<br>
+    <input type="text" name="username" value="">
+    <br><br>
+    Password:<br>
+    <input type="text" name="password" value="">
+    <br><br>
+    <!-- <%=JSON.stringify(contactData)%> -->
+    Contact ID:<br>
+    <select name= "contactID">
+
+      <% contactData.forEach(cdata =>{%>
+      <option value= "<%= cdata.id %>"><%=cdata.Name%></option>
+      <%})%>
+    </select>
+    <br><br>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+  </center>
+  </body>
+</html>
