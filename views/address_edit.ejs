@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Address Edit</title>
+  </head>
+  <body>
+    <form class="" action="/addresses/edit/<%= data_address[0].id %>" method="post">
+      <fieldset>
+        <legend>Edit Data Address</legend>
+        <b>Street : </b><br>
+        <input type="text" name="street" value="<%= data_address[0].street %>"> <br><br>
+        <b>City : </b><br>
+        <input type="" name="city" value="<%= data_address[0].city %>"> <br><br>
+        <b>Zip Code : </b></br>
+        <input type="text" name="zipcode" value="<%= data_address[0].zipcode %>"> <br><br>
+        <b>Contacts ID : <b></br>
+        <input type="text" name="contacts_id" value="<%= data_address[0].contacts_id %>"> <br><br>
+        
+        <input type="submit" name="" value="SUBMIT">
+      </fieldset>
+    </form>
+  </body>
+</html>

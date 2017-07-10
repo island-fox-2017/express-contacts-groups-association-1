@@ -1,0 +1,46 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.editdelete {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    background-color: #99ccff;
+}
+
+.action {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    background-color: #99ccff;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #c4f441;
+    border: none;
+    color: #000000;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: bold;
+}

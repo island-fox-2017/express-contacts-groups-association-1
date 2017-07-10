@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>addresses</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <form class="" action="addAddress" method="POST">
+      <a href="/"><input type="button" value="HOME"></a>      
+      <input type="submit" name="" value="ADD NEW ADDRESS">
+      <a href="/contacts"><input type="button" value="CONTACTS"></a>
+      <a href="/groups"><input type="button" value="GROUPS"></a>      
+    </form>
+    
+    <table style="table">
+      <tr style="tr">
+        <th style="th">No ID</th>
+        <th style="th">Street</th>
+        <th style="th">City</th>
+        <th style="th">Zip Code</th>
+        <th style="th">Contact ID</th>
+        <th class="action" colspan="2">ACTION</th>
+      </tr>
+      
+      <% data_address.forEach(address => { %>
+      <tr style="tr">
+        <td style="td"><%= address.id %></td>
+        <td style="td"><%= address.street %></td>
+        <td style="td"><%= address.city %></td>
+        <td style="td"><%= address.zipcode %></td>
+        <td style="td"><%= address.contacts_id %></td>
+        <td class="editdelete"><a href="/addresses/edit/<%= address.id %>">EDIT</a></td>
+        <td class="editdelete"><a href="/addresses/delete/<%= address.id %>" style="color:red" onclick="return confirm('Are you sure want to delete this record?')">DELETE</a></td>
+      </tr>
+    <% }) %>
+      
+    </table>
+  </body>
+</html>
