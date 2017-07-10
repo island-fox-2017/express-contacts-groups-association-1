@@ -100,16 +100,28 @@ app.post('/contacts/edit/:id', function (req, res) {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Groups
-
+/*
+SELECT
+  *
+FROM
+  Contacts AS c
+JOIN Contacts_Groups AS cg
+  ON c.id = cg.contact_id
+JOIN Groups AS g
+  ON g.id = cg.group_id
+*/
 app.get('/groups', function (req, res) {
   db.all(`
     SELECT
-      *
+      g.*,
+      cg.group_id,
+      cg.contact_id,
+      c.name
     FROM
       Groups AS g
-    JOIN Contacts_Groups AS cg
+    LEFT JOIN Contacts_Groups AS cg
       ON g.id = cg.group_id
-    JOIN Contacts AS c
+    LEFT JOIN Contacts AS c
       ON c.id = cg.contact_id
     ;
     `, function(err, rows) {
@@ -121,11 +133,7 @@ app.get('/groups', function (req, res) {
 });
 
 app.post('/groups', function (req, res) {
-  let objStartup = {}
-  objStartup.name_of_group = req.body.name_of_group;
-
-  myQuery.insertData2(objStartup);
-  //myQuery.showData();
+  myQuery.insertData2(req.body);
   res.redirect('/groups')
 });
 
