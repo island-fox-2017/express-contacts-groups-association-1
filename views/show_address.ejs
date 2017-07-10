@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>show addresses</title>
+  </head>
+  <body>
+    <table border="1px" width="100%">
+      <tr>
+        <th>id</th>
+        <th>street</th>
+        <th>city</th>
+        <th>zip code</th>
+      </tr>
+      <% dataAddress.forEach(d => { %>
+      <tr>
+        <td><%= d.idAddress %></td>
+        <td><%= d.street %></td>
+        <td><%= d.city %></td>
+        <td><%= d.zip %></td>
+      </tr>
+      <% }) %>
+    </table>
+    <br><a href="/contacts">back</a>
+  </body>
+</html>

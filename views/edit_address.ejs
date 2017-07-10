@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>edit address</title>
+  </head>
+  <body>
+    <form action="/addresses/edit/<%= dataEdit[0].id %>" method="post">
+      <input type="text" name="formStreet" placeholder="street" value="<%= dataEdit[0].street %>"><br>
+      <input type="text" name="formCity" placeholder="city" value="<%= dataEdit[0].city %>"><br>
+      <input type="text" name="formZip" placeholder="zip code" value="<%= dataEdit[0].zip %>"><br>
+      <!-- <input type="text" name="formIdContact" placeholder="id contact" value="<%= dataEdit[0].Contacts_id %>"><br> -->
+      <label for="formIdContact">Contact name:</label>
+      <select name="formIdContact">
+        <% dataKontak.forEach(d => { %>
+        <option value="<%= d.id %>"><%= d.name %></option>
+        <% }) %>
+      </select><br>
+      <input type="submit" name="submit" value="SUBMIT">
+    </form>
+  </body>
+</html>

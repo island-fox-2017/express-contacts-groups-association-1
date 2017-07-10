@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>edit contact</title>
+  </head>
+  <body>
+    <form action="/contacts/edit/<%= dataEdit[0].id %>" method="post">
+      <input type="text" name="formName" placeholder="name" value="<%= dataEdit[0].name %>"><br>
+      <input type="text" name="formCompany" placeholder="company" value="<%= dataEdit[0].company %>"><br>
+      <input type="text" name="formPhone" placeholder="phone number" value="<%= dataEdit[0].phone_num %>"><br>
+      <input type="text" name="formEmail" placeholder="email" value="<%= dataEdit[0].email %>"><br>
+      <input type="submit" name="submit" value="SUBMIT">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contacts</title>
+  </head>
+  <body>
+    <table border="1px" width="100%">
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>company</th>
+        <th>phone number</th>
+        <th>email</th>
+        <th>action</th>
+      </tr>
+      <% dataKontak.forEach(d => { %>
+      <tr>
+        <td><%= d.id %></td>
+        <td><%= d.name %></td>
+        <td><%= d.company %></td>
+        <td><%= d.phone_num %></td>
+        <td><%= d.email %></td>
+        <td><a href="/contacts/edit/<%= d.id %>">Edit</a> | <a href="/contacts/delete/<%= d.id %>">Delete</a> | <a href="/contacts/addresses/<%= d.id %>">Show addresses</a></td>
+      </tr>
+      <% }) %>
+    </table>
+    <br>
+    <form action="/contacts" method="post">
+      <input type="text" name="formName" placeholder="name"><br>
+      <input type="text" name="formCompany" placeholder="company"><br>
+      <input type="text" name="formPhone" placeholder="phone number"><br>
+      <input type="text" name="formEmail" placeholder="email"><br>
+      <input type="submit" name="submit" value="SUBMIT">
+    </form>
+    <br><a href="/">back</a>
+    <!-- <br><%= JSON.stringify(dataKontak[0]) %> -->
+  </body>
+</html>
