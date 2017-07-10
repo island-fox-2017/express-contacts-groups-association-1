@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>group page</title>
+  </head>
+  <body>
+    <h1><%= header %></h1>
+    <table border="1">
+    <tr>
+      <th>Id</th>
+      <th>Name of Group</th>
+    </tr>
+    <% data_groups.forEach( dataGroup => { %>
+      <tr>
+        <td><%= dataGroup.id %></td>
+        <td><%= dataGroup.name_of_group %></td>
+        <td>
+          <a href="/groups/edit/<%= dataGroup.id %>">edit</a>
+          <a href="/groups/delete/<%= dataGroup.id %>">delete</a>
+        </td>
+      </tr>
+    <% }) %>
+    </table>
+    <br>
+    <form action="/groups" method="post">
+      <table>
+        <tr>
+          <td>Name :</td>
+          <td><input type="text" name="name_of_group" placeholder="input nama group"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+    </form>
+    <br>
+    <a href="/">index page</a>
+  </body>
+</html>

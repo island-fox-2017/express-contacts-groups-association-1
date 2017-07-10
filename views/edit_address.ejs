@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Address edit</title>
+  </head>
+  <body>
+    <%= header %>
+    <form action="/address/edit/<%= data_address[0].id %>" method="post">
+      <table>
+        <tr>
+        <td>Street:</td>  
+        <td><input type="text" name="street" value="<%= data_address[0].street %>"></td>
+        </tr>
+        <tr>
+          <td>City:</td>
+          <td><input type="text" name="city" value="<%= data_address[0].city %>"></td>
+        </tr>
+        <tr>
+          <td>Zip Code:</td>
+          <td><input type="text" name="zip_code" value="<%= data_address[0].zip_code %>"></td>
+        </tr>
+        <tr>
+          <td>Contact id:</td>
+          <td>
+            <select name="contacts_id">
+              <% data_contacts.forEach( dt =>{ %>
+                <option value="<%=dt.id %>">(<%= dt.id %>). <%= dt.name %></option>
+              <% }) %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
