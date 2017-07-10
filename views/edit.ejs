@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit</title>
+  </head>
+  <body>
+    <h1>Halaman Edit</h1>
+    <%data.forEach(d => { %>
+    <form action="/contacts/update/<%=data[0].id%>" method="post">
+      <br>Id:</br>
+      <input type="text" name="nama" value="<%= data[0].id%>">
+      <br>Nama:</Br>
+      <input type="text" name="nama" value="<%= data[0].name%>">
+      <br>Company:</br>
+      <input type="text" name="company" value="<%= data[0].company%>">
+      <br>Number Telp</Br>
+      <input type="text" name="number_telp" value="<%= data[0].number_telp%>">
+      <br>Email</Br>
+      <input type="text" name="email" value="<%= data[0].email%>">
+      <% }) %>
+    </form>
+  </body>
+</html>

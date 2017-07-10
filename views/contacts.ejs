@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hal Contacts</title>
+  </head>
+  <body>
+    <h1>Contact</h1>
+    <div>
+      <table border="1">
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>company</th>
+          <th>number_telp</th>
+          <th>email</th>
+          <th>Action</th>
+        </tr>
+
+        <% data.forEach(d => { %>
+        <tr>
+        <td><%=d.id%></td>
+        <td><%=d.name%></td>
+        <td><%=d.company%></td>
+        <td><%=d.number_telp%></td>
+        <td><%=d.email%></td>
+        <td><a href="/contacts/edit/<%= d.id %>"><button type="button" name="button">Edit</button></a></td>
+        <td><a href="contacts/delete/<%= d.id %>"><button type="button" name="button">Delete</button></a></td>
+      </tr>
+      <% }) %>
+      </table>
+    </div>
+
+    <div>
+      <form action="/contacts" method="post">
+        <input type="text" name="name" placeholder="Isi Nama">
+        <input type="text" name="company" placeholder="Isi Company">
+        <input type="text" name="number_telp" placeholder="Isi No Telp">
+        <input type="text" name="email" placeholder="Isi Alamat Email">
+        <button type="submit" name="button">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
