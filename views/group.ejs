@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    table {
+      font-family:Gill Sans Extrabold, sans-serif;
+      position: center;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 1px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+  <title>GROUP</title>
+  </head>
+
+  <body>
+  <center><h3>GROUP INFO</h3><center><br>
+  <a href="/group/addgroup"><button type="Submit" name="Add">Add New Group</button></a>
+  <br><br>
+  <form action="/group" method="POST">
+  <center>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>GROUP Name</th>
+      <th colspan='2'></th>
+    </tr>
+    <% dataGroup.forEach(group =>{%>
+    <tr>
+      <td><%= group.id %></td>
+      <td><%= group.GroupName %></td>
+
+      <td><a href="/group/edit/<%= group.id %>"><button type="button" name="Edit">EDIT</button></a></td>
+      <td><a href="/group/delete/<%= group.id %>"><button type="button" name="Delete">DELETE</button></a></td>
+      </tr>
+      <%})%>
+    </table>
+  </center>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PROFILE</title>
+  </head>
+  <body>
+  <center>
+    <h2>ADD Address</h2><br><br>
+    <form action="/address/add" method="POST">
+    Street:<br>
+    <input type="text" name="street" value="">
+    <br><br>
+    City:<br>
+    <input type="text" name="city" value="">
+    <br><br>
+    Zip Code:<br>
+    <input type="text" name="zipcode" value="">
+    <br><br>
+
+    Contact ID:<br>
+    <select name= "contactID">
+
+      <% addressData.forEach(cdata =>{%>
+      <option value= "<%= cdata.id %>"><%=cdata.Name%></option>
+      <%})%>
+    </select>
+    <br><br>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+  </center>
+  </body>
+</html>
