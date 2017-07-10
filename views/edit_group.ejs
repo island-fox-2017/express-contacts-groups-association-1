@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit My Groups</title>
+  </head>
+
+  <body>
+    <% group_data.forEach(group => { %>
+    <form action="/groups/edit/<%=group.id%>" method="post">
+      <br><br>
+
+      Group Name : <input type="text" name="nama_group" value="<%= group.name_of_group%>"><br>
+      <button type="submit" name="">Update</button>
+    </form>
+    <% }) %>
+
+    <a href="/">home</a>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Address</title>
+  </head>
+
+  <body>
+    <% addr_data.forEach(ad => { %>
+    <form action="/addresses/edit/<%=ad.id%>" method="post">
+      <br><br>
+      Street : <input type="text" name="street" value="<%= ad.street%>"><br>
+      City : <input type="text" name="city" value="<%= ad.city%>"><br>
+      Zip Code : <input type="integer" name="zip" value="<%= ad.zip%>"><br>
+      <label>Pilih Contact</label><br>
+      <select name= "kontak_id">
+        <% contact_data.forEach(c => { %>
+        <option value="<%= c.id %>"><%= c.name %></option>
+        <% }) %>
+      </select><br><br>
+      <button type="submit" name="">Update</button>
+    </form>
+    <% }) %>
+
+    <a href="/contacts">contact</a>
+    <a href="/">home</a>
+
+  </body>
+</html>

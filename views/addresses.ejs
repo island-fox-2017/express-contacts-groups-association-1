@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Adresses</title>
+  </head>
+
+  <body>
+
+    <table>
+      <tr>
+        <th> Address ID </th>
+        <th> Street</th>
+        <th> City</th>
+        <th> Zip Code</th>
+        <th> Contact ID</th>
+
+      </tr>
+      <% addr_data.forEach(ad => { %>
+        <tr>
+          <td><%= ad.id %> </td>
+          <td><%= ad.street %></td>
+          <td><%= ad.city %></td>
+          <td><%= ad.zip %></td>
+          <td><%= ad.contact_id %></td>
+
+          <td><a href="addresses/edit/<%= ad.id %>">edit</a></td>
+          <td><a href="addresses/delete/<%= ad.id %>">delete</a></td>
+        </tr>
+
+     <% }) %>
+    </table>
+    <br>
+    <br>
+    <form action="/addresses" method="post">
+      <label>Address</label><br>
+      <input type = "text" name="street" placeholder="type your address"></input><br><br>
+      <label>City</label><br>
+      <input type = "text" name="city" placeholder="type your city"></input><br><br>
+      <label>Zip Code</label><br>
+      <input type = "integer" name="zip" placeholder="type your zip code"></input><br><br>
+      <!-- <input type = "integer" name="kontak_id" placeholder="Insert nomor Contact ID"></input> -->
+      <label>Pilih Contact</label><br>
+      <select name= "kontak_id">
+        <% contact_data.forEach(c => { %>
+        <option value="<%= c.id %>"><%= c.name %></option>
+        <% }) %>
+      </select><br><br>
+      <button type="submit">Add Address</button>
+    </form>
+    <br>
+    <br>
+    <a href="/">home</a>
+  </body>
+</html>

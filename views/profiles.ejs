@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+  </head>
+
+  <body>
+
+    <table>
+      <tr>
+        <th> Profile ID </th>
+        <th> Username</th>
+        <th> Password</th>
+        <th> Contact ID</th>
+
+      </tr>
+      <% profile_data.forEach(prof => { %>
+        <tr>
+          <td><%= prof.id %> </td>
+          <td><%= prof.username %></td>
+          <td><%= prof.password %></td>
+          <td><%= prof.contact_id %></td>
+
+          <td><a href="profiles/edit/<%= prof.id %>">edit</a></td>
+          <td><a href="profiles/delete/<%= prof.id %>">delete</a></td>
+        </tr>
+
+     <% }) %>
+    </table>
+    <br>
+    <br>
+    <form action="/profiles" method="post">
+      <label>Username</label><br>
+      <input type = "text" name="nama_user" placeholder="Insert username"></input><br><br>
+      <label>Password</label><br>
+      <input type = "password" name="pass" placeholder="Insert password"></input></br><br>
+      <!-- <input type = "integer" name="kontak_id" placeholder="Insert nomor Contact ID"></input> -->
+      <label>Pilih Contact</label><br>
+      <select name= "kontak_id">
+        <% contact_data.forEach(c => { %>
+        <option value="<%= c.id %>"><%= c.name %></option>
+        <% }) %>
+      </select><br><br>
+
+      <button type="submit">Add Profile</button>
+    </form>
+    <br>
+    <br>
+    <a href="/">home</a>
+  </body>
+</html>

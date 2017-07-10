@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User Address</title>
+  </head>
+
+  <body>
+
+    <!-- <%=JSON.stringify(contact_data)%> -->
+    <table>
+      <tr>
+        <th> ID </th>
+        <th> Name</th>
+        <th> Company</th>
+        <th> Phone Number</th>
+        <th> Email</th>
+        <th> Street</th>
+        <th> City</th>
+        <th> Zip Code</th>
+        <th> Contact ID</th>
+      </tr>
+      <% contact_data.forEach(ad => { %>
+        <tr>
+          <td><%= ad.id %> </td>
+          <td><%= ad.name %></td>
+          <td><%= ad.company %></td>
+          <td><%= ad.telp_number %></td>
+          <td><%= ad.email %></td>
+          <td><%= ad.street %></td>
+          <td><%= ad.city %></td>
+          <td><%= ad.zip %></td>
+          <td><%= ad.contact_id %></td>
+        </tr>
+
+     <% }) %>
+    </table>
+    <br>
+    <br>
+
+    <a href="/contacts">contact</a>
+    <a href="/">home</a>
+  </body>
+</html>
