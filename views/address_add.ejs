@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <br>
+    <center>
+      <h1>Add New Address</h1>
+      <h3>Express JS dan SQLITE3 App</h3><br>
+      <!-- <a href="../">Contact List</a> &nbsp; -->
+      <table width='200'>
+        <tr>
+          <td>
+            <form action="/addresses/add" method="post">
+              <label >Street Address</label><br>
+              <input type="text" name="street" placeholder="street address"><br><br>
+              <label >City</label><br>
+              <input type="text" name="city" placeholder="your city"><br><br>
+              <label>Zip Code</label>
+              <input type="text" name="zip_code" placeholder="Zip Code"><br><br>
+              <label >Contact ID</label><br>
+
+              <!-- <input type="text" name="contact_id" placeholder="ex:081"><br><br> -->
+              <select  name="contact_id"  >
+                <option value="" disabled selected>Please select a name...</option>
+
+                <% contacts_list.forEach(getData => { %>
+                  <option value="<%= getData.id %>"> ID : <%= getData.id %> - <%= getData.name %></option>
+                <% }) %>
+              </select>
+            <br><br>
+              <button type="submit" name="button">Add New Address</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </center>
+
+  </body>
+</html>

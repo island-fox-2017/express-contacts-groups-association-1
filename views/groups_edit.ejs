@@ -1,0 +1,25 @@
+<br>
+<center>
+  <h1>Groups Editor</h1>
+  <h3>Express JS dan SQLITE3 App</h3><br>
+  <a href="../">Contact List</a> &nbsp;
+  <table width='200'>
+    <tr>
+      <td>
+<% groups_list.forEach(getData => { %>
+          <form action="/groups/edit/<%= getData.id %>" method="post">
+          <label >Group Name</label><br>
+          <input type="text" name="group_name" value="<%= getData.group_name %>"><br><br>
+          <!-- <label >Company</label><br>
+          <input type="text" name="company" value="<%= getData.company %>"><br><br>
+          <label >Phone Number</label><br>
+          <input type="text" name="phone" value=<%= getData.phone %>><br><br>
+          <label >Email Address</label><br>
+          <input type="text" name="email" value=<%= getData.email %>><br><br> -->
+          <button type="submit" name="button">Update Contact</button>
+        </form>
+<% }) %>
+      </td>
+    </tr>
+  </table>
+</center>

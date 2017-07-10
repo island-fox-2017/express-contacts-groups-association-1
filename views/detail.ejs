@@ -1,0 +1,41 @@
+<br>
+<center>
+  <% detail_profile.forEach(getData => { %>
+  <h1>Contact Details of : <%= getData.name %></h1>
+  <h3>Express JS dan SQLITE3 App</h3><br>
+  <!-- <a href="../"><input type="submit" value="Home"></a> &nbsp;
+  <a href="/profile/add"><input type="submit" value="Add New Profile"></a><br> -->
+  <table>
+    <tr>
+      <td>Username</td><td>:</td>
+      <td><%= getData.username %></td>
+    </tr>
+    <tr>
+      <td>Password</td><td>:</td>
+      <td><%= getData.pass %></td>
+    </tr>
+    <tr>
+      <td>Fullname</td><td>:</td>
+      <td><%= getData.firstname %></td>
+    </tr>
+    <tr>
+      <td>Fullname</td><td>:</td>
+      <td><%= getData.lastname %></td>
+    </tr>
+    <tr>
+      <td>Company</td><td>:</td>
+      <td><%= getData.company %></td>
+    </tr>
+    <tr>
+      <td>Phone Number</td><td>:</td>
+      <td><%= getData.phone %></td>
+    </tr>
+    <tr>
+      <td>Email</td><td>:</td>
+      <td><%= getData.email %></td>
+    </tr>
+
+  </table>
+    <% }) %>
+    <a href="/profile"><button type="button" name="button">Back</button></a>
+<br>

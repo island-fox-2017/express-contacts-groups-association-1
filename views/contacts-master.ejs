@@ -1,0 +1,35 @@
+<br>
+<center>
+  <h1>Contacts List</h1>
+  <h3>Express JS dan SQLITE3 App</h3><br>
+  <a href="../"><input type="submit" value="Home"></a> &nbsp;
+  <a href="/contacts/add"><input type="submit" value="Add New Contact"></a><br>
+  <table width='800'>
+    <thead>
+      <th>No</th>
+      <th>Name</th>
+      <th>Company</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Action</th>
+    </thead>
+    <% contacts_list.forEach(getData => {
+
+      %>
+
+    <tr>
+      <td><% for(var i = 1; i < contacts_list.length; i++){ %> <%= i %> <% } %></td>
+      <td><%= getData.name %></td>
+      <td><%= getData.company %></td>
+      <td><%= getData.phone %></td>
+      <td><%= getData.email %></td>
+
+      <td align='center'>
+        <a href="/contacts/edit/<%= getData.id %>"><input type="submit" value="Edit"></a>
+        <a href="/contacts/delete/<%= getData.id %>"><input type="submit" value="Delete"></a>
+      </td>
+    </tr>
+
+    <% }) %>
+  </table>
+</center>

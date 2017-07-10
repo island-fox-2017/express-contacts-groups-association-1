@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <br>
+    <center>
+      <h1>Adresses List</h1>
+      <h3>Express JS dan SQLITE3 App</h3><br>
+      <a href="../"><input type="submit" value="Home"></a> &nbsp;
+      <a href="/addresses/add"><input type="submit" value="Add New Address"></a><br>
+    <br>
+      <table class="table table-striped">
+        <thead>
+          <th width='50'  class="text-center">No</th>
+          <th  width='50'>ID</th>
+          <th width='300'>Address</th>
+          <th width='175'>City</th>
+          <th width='125'>Zip Code</th>
+          <th width='120'>Contact ID</th>
+          <th class="text-center">Action</th>
+        </thead>
+        <% var i = 1; address.forEach(getData => { %>
+
+        <tr>
+          <td  class="text-center"><%= i %> <% i += 1 %></td>
+          <td><%= getData.id %></td>
+          <td><%= getData.street %></td>
+          <td><%= getData.city %></td>
+          <td><%= getData.zip_code %></td>
+          <td  class="text-center"><%= getData.contact_id %></td>
+
+          <td  class="text-center">
+            <a href="/addresses/<%= getData.id %>/edit"> <button type="button" class="btn btn-info"  name="button">Edit</button></a>
+            <a href="/addresses/<%= getData.id %>/delete"><input type="submit" class="btn btn-danger" value="Delete"></a>
+            <!-- <a href="/addresses/<%= getData.contact_id %>/address_detail"><input type="submit" class="btn-success" value="View Detail"></a> -->
+          </td>
+        </tr>
+
+        <% }) %>
+      </table>
+    </center>
+
+  </body>
+</html>
