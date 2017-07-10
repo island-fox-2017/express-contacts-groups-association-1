@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Address</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+</style>
+  </head>
+  <body>
+    <h1> Data Address </h1>
+    <br>
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>Province</th>
+        <th>Zip_code</th>
+        <th>Contact_id</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Show</th>
+      </tr>
+    <% var i = 1 %>
+    <% isiAddress.forEach(function(address) { %>
+       <tr>
+        <td><%= i %> <% i+=1 %></td>
+        <td><%= address.street %></td>
+        <td><%= address.city %></td>
+        <td><%= address.province %></td>
+        <td><%= address.zip_code %></td>
+        <td><%= address.contact_id %></td>
+        <td><a href="/address/<%= address.id%>">Edit</a></td>
+        <td><a href="/address/deleteAddres/<%= address.id%>">Delete</td>
+        <td><a href="/address/<%= address.contact_id%>">Show</td>
+      </tr>
+    <% }) %>
+    </table>
+    <br>
+    <br>
+  <form action="/address" method="post">
+    Street     :       <br><input type="text" name="Name" ><br>
+    City       :       <br><input type="text" name="City" ><br>
+    Province   :       <br><input type="text" name="Province" ><br>
+    Zip_code   :       <br><input type="text" name="Zipcode" ><br>
+    <!-- Contact_id :       <br><input type="text" name="Contactid" ><br> -->
+    <select name="Contactid">
+      <%isiAddress3.forEach(function(address){ %>
+        <option value = '<%= address.id%>'><%= address.nama %> </option>
+      <% }) %>
+    </select>
+    <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

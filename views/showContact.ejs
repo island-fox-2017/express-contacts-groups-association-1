@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+    </style>
+    <meta charset="utf-8">
+    <title>showContact</title>
+  </head>
+  <body>
+    <!-- <%= JSON.stringify(isiProfile) %> -->
+
+    <h1> Data Contacts </h1>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Nama</th>
+        <th>Company</th>
+        <th>Telp_Number</th>
+        <th>Email</th>
+      </tr>
+    <% isiProfile.forEach(function(contact) { %>
+       <tr>
+        <td><%= contact.id %></td>
+        <td><%= contact.nama %></td>
+        <td><%= contact.company %></td>
+        <td><%= contact.telp_number %></td>
+        <td><%= contact.email %></td>
+      </tr>
+    <% }) %>
+    </table>
+
+
+  </body>
+</html>
