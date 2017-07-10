@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Street</th>
+    <th>City</th>
+    <th>Zip Code</th>
+    <th>Contact Id</th>
+
+  </tr>
+  <% datas.forEach( data => {%>
+  <tr>
+    <td><%= data.id%></td>
+    <td><%= data.street%></td>
+    <td><%= data.city%></td>
+    <td><%= data.zip_code%></td>
+    <td><%= data.contacts_id%></td>
+  <%}) %>
+  </tr>
+
+</table>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Groups</title>
+    <link rel="stylesheet" href="style.css">
+     <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Name Of Group</th>
+        <th>Action</th>
+      </td>
+      <% for(var i = 0; i < data.length; i++) { %>
+      <tr>
+        <td><%= data[i].id %></td>
+        <td><%= data[i].name_of_group %></td>
+        <td><a class ='button_2' href="groups/edit/<%= data[i].id%>">Edit</a> || <a class='button_2' href="groups/delete/<%=data[i].id%>">Delete</a></td>
+      </tr>
+      <%  }  %>
+
+    </table>
+
+    <!-- * Groups: id type integer, name_of_group type string -->
+
+    <form action="/groups" method="post">
+      <input  type="text" name='name_of_group' placeholder="name_of_group">
+      <button class ='button_3' type="submit">Submit</button>
+    </form>
+  </body>
+</html>

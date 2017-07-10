@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Groups</title>
+    <link rel="stylesheet" href="style.css">
+     <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Name Of Group</th>
+        <th>Name</th>
+      </td>
+      <% for(var i = 0; i < data.length; i++) { %>
+      <tr>
+        <td><%= data[i].a %></td>
+        <td><%= data[i].name_of_group %></td>
+        <td><%= data[i].name %></td>
+      </tr>
+      <%  }  %>
+
+    </table>
+
+    <!-- * Groups: id type integer, name_of_group type string -->
+  </body>
+</html>

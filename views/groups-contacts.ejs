@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Groups Id</th>
+        <th>Contacts Id</th>
+        <th>Action</th>
+      </tr>
+      <% data_gc.forEach( data => {%>
+      <tr>
+        <td><%= data.id%></td>
+        <td><%= data.groups_id%></td>
+        <td><%= data.contacts_id%></td>
+        <!-- <td><a href="address/delete/<%= data.id%>">Delete</a>||
+            <a href="/address/edit/<%= data.id%>">Edit</a>
+        </td> -->
+      <%}) %>
+      </tr>
+
+    </table>
+    <form action="/groups-contacts" method="post">
+      <select name="contacts_id">
+        <% data_c.forEach( cont => {%>
+          <option value="<%= cont.id%>"><%= cont.name%></option>
+        <%})%>
+      </select>
+      <select name="groups_id">
+        <% data_g.forEach( cont => {%>
+          <option value="<%= cont.id%>"><%= cont.name_of_group%></option>
+        <%})%>
+      </select>
+      <button type="submit" name="button">Submit</button>
+    </form>
+  </body>
+</html>
