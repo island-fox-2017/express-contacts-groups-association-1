@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profiles</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+<!--    <h3> <%= JSON.stringify(data_addresses) %></h3>-->
+      <table>
+        <tr>
+            <th>ID</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>ZIP Code</th>
+            <th>Contacts ID</th>
+            <th>Actions</th>
+        </tr>
+
+        <% data_addresses.forEach(address => { %>
+          <tr>
+            <td><%= address.id %></td>
+            <td><%= address.street %></td>
+            <td><%= address.city %></td>
+            <td><%= address.zip_code %></td>
+            <td><%= address.contact_id %></td>
+            <td><a href="/addresses/edit/<%= address.id %>">Edit</a> <a href="/addresses/delete/<%= address.id %>">Delete</a></td>
+        </tr>
+        <% }) %>
+      </table>
+      </br>
+      <a href="/addresses/add">Add addresses</a>
+      <!-- <form action="/profiles" method="post">
+      <input type="text" name="username" placeholder="Your username" required>
+      <input type="password" name="password" placeholder="Your password" required>
+      <input type="text" name="contact_id" placeholder="Your contact id" required>
+
+      <button type="submit">Submit</button>
+    </form> -->
+    </br>
+    <a href="/">Home</a>
+  </body>
+</html>

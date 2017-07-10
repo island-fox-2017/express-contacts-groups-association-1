@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+<!--    <h3> <%= JSON.stringify(data_contacts) %></h3>-->
+      <table>
+        <tr>
+            <th>ID</th>
+            <th>Group Name</th>
+            <th>Actions</th>
+        </tr>
+          
+        <% data_contacts.forEach(contact => { %>
+          <tr>
+            <td><%= contact.id %></td>
+            <td><%= contact.name_of_group %></td>
+            <td><a href="/groups/edit/<%= contact.id %>">Edit</a> <a href="/groups/delete/<%= contact.id %>">Delete</a></td>
+        </tr>
+        <% }) %>
+      </table>
+      </br>
+      <form action="/groups" method="post">
+      <input type="text" name="name_of_group" placeholder="Your group name" required>
+      
+      <button type="submit">Submit</button>
+    </form>
+    </br>
+    <a href="/">Home</a>
+  </body>
+</html>

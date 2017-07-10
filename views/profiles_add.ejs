@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profiles</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+<!--    <h3> <%= JSON.stringify(data_contacts) %></h3>-->
+      </br>
+      <form action="/profiles/add" method="post">
+      <input type="text" name="username" placeholder="Your username" required>
+      <input type="password" name="password" placeholder="Your password" required>
+      <!-- <input type="text" name="contact_id" placeholder="Your contact id" required> -->
+      <select name="contact_id">
+        <option value="">Choose your contact</option>
+        <% data_contacts.forEach(contact => { %>
+          <option value="<%= contact.id %>"><%= contact.name %></option>
+        <% }) %>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+    </br>
+    <a href="/profiles">Cancel</a>
+  </body>
+</html>
