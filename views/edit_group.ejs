@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>edit contact</title>
+  </head>
+  <body>
+    <form action="/groups/edit/<%= dataEdit[0].id %>" method="post">
+      <input type="text" name="formGroupName" placeholder="name of group" value="<%= dataEdit[0].name_of_group %>"><br>
+      <input type="submit" name="submit" value="SUBMIT">
+    </form>
+  </body>
+</html>

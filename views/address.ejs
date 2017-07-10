@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>address page</title>
+  </head>
+  <body>
+    <table border="1px" width="100%">
+      <tr>
+        <th>id address</th>
+        <th>street</th>
+        <th>city</th>
+        <th>zip code</th>
+        <th>id contact</th>
+        <th>nama kontak</th>
+        <th>actions</th>
+      </tr>
+      <% dataAd.forEach(d => { %>
+        <tr>
+          <td><%= d.idAddress %></td>
+          <td><%= d.street %></td>
+          <td><%= d.city %></td>
+          <td><%= d.zip %></td>
+          <td><%= d.Contacts_id %></td>
+          <td><%= d.name %></td>
+          <td><a href="/addresses/edit/<%= d.idAddress %>">Edit</a> | <a href="/addresses/delete/<%= d.idAddress %>">Delete</a></td>
+        </tr>
+      <% }) %>
+    </table>
+    <br>
+    <form action="/addresses" method="post">
+      <input type="text" name="formStreet" placeholder="street"><br>
+      <input type="text" name="formCity" placeholder="city"><br>
+      <input type="text" name="formZip" placeholder="zip code"><br>
+      <!-- <input type="text" name="formIdContact" placeholder="id contact"><br> -->
+      <label for="formIdContact">Contact name:</label>
+      <select name="formIdContact">
+        <% dataKontak.forEach(d => { %>
+        <option value="<%= d.id %>"><%= d.name %></option>
+        <% }) %>
+      </select><br>
+      <input type="submit" name="submit" value="SUBMIT">
+    </form>
+    <br>
+    <a href="/">back</a>
+  </body>
+</html>
