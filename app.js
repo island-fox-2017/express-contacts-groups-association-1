@@ -32,7 +32,23 @@ app.get('/contacts', function (req, res) {
     SELECT * FROM Contacts;
     `, function(err, rows) {
       if(!err) {
-        res.render('contacts', {datas: rows});
+        db.all(`
+          SELECT
+            *
+          FROM
+            Groups AS g
+          JOIN Contacts_Groups AS cg
+            ON g.id = cg.group_id
+          JOIN Contacts AS c
+            ON c.id = cg.contact_id
+
+          ;
+          `, function(err, rows2) {
+            if(!err) {
+              res.render('contacts', {datas: rows, slice: rows2});
+              //res.send(rows2);
+            }
+          });
       }
     });
 
@@ -90,14 +106,16 @@ app.get('/groups', function (req, res) {
     SELECT
       *
     FROM
-      Contacts_Groups
-    LEFT JOIN Groups ON
-      Groups.id = Contacts_Groups.group_id
-    LEFT JOIN Contacts ON
-      Contacts.id = Contacts_Groups.contact_id;
+      Groups AS g
+    JOIN Contacts_Groups AS cg
+      ON g.id = cg.group_id
+    JOIN Contacts AS c
+      ON c.id = cg.contact_id
+    ;
     `, function(err, rows) {
       if(!err) {
         res.render('groups', {datas: rows});
+        //res.send(rows);
       }
     });
 });

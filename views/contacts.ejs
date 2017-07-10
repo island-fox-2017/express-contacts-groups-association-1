@@ -18,6 +18,7 @@
           <th>Company</th>
           <th>Telephone Number</th>
           <th>Email</th>
+          <th>Groups</th>
           <th bgcolor="teal">Profiles</th>
           <th bgcolor="teal">Address</th>
           <th>Edit</th>
@@ -32,6 +33,13 @@
           <th><%= i.company %></th>
           <th><%= i.telp_number %></th>
           <th><%= i.email %></th>
+          <th>
+            <% slice.forEach(j => {
+              if (i.id === j.id) { %>
+                <%= j.name_of_group %>,
+            <%  }
+             }) %>
+          </th>
           <th><a href=/profiles/<%= i.id %>>Profiles</a></th>
           <th><a href=/address/<%= i.id %>>Address</a></th>
           <th><a href=/contacts/edit/<%= i.id %>>Edit</a></th>
