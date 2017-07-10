@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>contacts</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <form class="" action="addContact" method="POST">
+      <a href="/"><input type="button" value="HOME"></a>
+      <input type="submit" value="ADD NEW CONTACT">
+      <a href="/groups"><input type="button" value="GROUPS"></a>
+      <a href="/addresses"><input type="button" value="ADDRESSES"></a>
+      <a href="/profiles"><input type="button" value="PROFILES"></a>
+    </form>  
+      
+    <!-- <%= JSON.stringify(data_contact) %> -->    
+    <table style="table">      
+      <tr style="tr">
+        <th style="th">ID</th>
+        <th style="th">Name</th>        
+        <th style="th">Company</th>  
+        <th style="th">Phone</th>        
+        <th style="th">Email</th>    
+        <th class="action" colspan="3">ACTION</th>     
+      </tr>            
+      
+      <% data_contact.forEach(contact => { %>     
+      <tr style="tr">
+        <td style="td"><%= contact.id %></td>
+        <td style="td"><%= contact.name %></td>        
+        <td style="td"><%= contact.company %></td>  
+        <td style="td"><%= contact.telp_number %></td>        
+        <td style="td"><%= contact.email %></td> 
+        <td class="editdelete"><a href="/contacts/edit/<%= contact.id %>" >EDIT</a></td>
+        <td class="editdelete"><a href="/contacts/delete/<%= contact.id %>" style="color:red" onclick="return confirm('Are you sure want to delete this record?')">DELETE</a></td>
+        <td class="editdelete"><a href="/addresses/<%= contact.id %>" >SHOW ADDRESS</a></td>
+      </tr>
+      <% }) %>
+      
+    </table>
+  </body>
+</html>

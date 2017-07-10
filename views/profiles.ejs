@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>profiles</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <form class="" action="addProfiles" method="post">
+      <a href="/"><input type="button" value="HOME"></a>
+      <input type="submit" name="" value="ADD NEW PROFILE">
+      <a href="/contacts"><input type="button" value="CONTACTS"></a>
+      <a href="/groups"><input type="button" value="GROUPS"></a> 
+      <a href="/addresses"><input type="button" value="ADDRESSES"></a>
+    </form>
+    
+    
+    
+    <table style="table">
+      <tr style="tr">
+        <th style="th">ID</th>
+        <th style="th">Username</th>
+        <th style="th">Facebook Username</th>
+        <th style="th">Google Username</th>
+        <th style="th">Contact ID</th>
+        <th style="th">Name</th>
+        <th style="th">Company</th>
+        <th style="th">Phone Number</th>
+        <th style="th">Email</th>
+        <th class="action" colspan="2">ACTION</th>
+      </tr>
+      
+      <% data_profile.forEach(profile => { %>
+      <tr style="tr">
+        <td style="td"><%= profile.id %></td>
+        <td style="td"><%= profile.username %></td>
+        <td style="td"><%= profile.facebook_username %></td>
+        <td style="td"><%= profile.google_username %></td>
+        <td style="td"><%= profile.contacts_id %></td>
+        <td style="td"><%= profile.name %></td>
+        <td style="td"><%= profile.company %></td>
+        <td style="td"><%= profile.telp_number %></td>
+        <td style="td"><%= profile.email %></td>
+        <td class="editdelete"><a href="/profiles/edit/<%= profile.id %>">EDIT</a></td>
+        <td class="editdelete"><a href="/profiles/delete/<%= profile.id %>" style="color:red" onclick="return confirm('Are you sure want to delete this record?')">DELETE</a></td>
+      </tr>
+    <% }) %>
+    </table>
+  </body>
+</html>
