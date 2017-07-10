@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    table {
+      font-family:Comic Extrabold, sans-serif;
+      position: center;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 1px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+  <title>Address</title>
+  </head>
+
+  <body>
+  <center><h3>Address</h3><center><br>
+  <br><br>
+  <center>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>ZIP code</th>
+      <th>Contact_id</th>
+      <th colspan='2'></th>
+    </tr>
+    <% dataAdd.forEach(ad =>{%>
+    <tr>
+      <td><%= ad.id %></td>
+      <td><%= ad.Street %></td>
+      <td><%= ad.City %></td>
+      <td><%= ad.ZIPcode %></td>
+      <td><%= ad.Contact_id %></td>
+      <td><a href="/address/delete/<%= ad.id %>"><button type="button" name="Delete">DELETE</button></a></td>
+      <td><a href="/address/edit/<%= ad.id %>"><button type="button" name="Edit">EDIT</button></a></td>
+      </tr>
+      <%})%>
+    </table>
+
+    <form action="/address" method="POST">
+    <input type="text" name="Street" value="" placeholder="Street">
+    <br><br>
+    <input type="text" name="City" value="" placeholder="City">
+    <br><br>
+    <input type="text" name="ZIPcode" value="" placeholder="ZIP code">
+    <br><br>
+    <select name = "Contact_id">
+    <option value "">
+      -- Select ID Contact --
+    </option>
+
+    <% dataCon.forEach( cont => { %>
+    <option value ="<%= cont.id %>">
+    <%= cont.Name %>
+    </option>
+    <% }) %>
+  </select>
+    <input type="submit" value="Submit">
+    </center>
+    </form>
+  </body>
+</html>

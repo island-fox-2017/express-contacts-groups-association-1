@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    table {
+      font-family:Comic Extrabold, sans-serif;
+      position: center;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 1px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+  <title>Profile</title>
+  </head>
+
+  <body>
+  <center><h3>Profile</h3><center><br>
+  <br><br>
+  <center>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Contact_id</th>
+      <th colspan='2'></th>
+    </tr>
+    <% dataProfile.forEach(prof =>{%>
+    <tr>
+      <td><%= prof.id %></td>
+      <td><%= prof.Username %></td>
+      <td><%= prof.Password %></td>
+      <td><%= prof.Contact_id %></td>
+      <td><a href="/profile/contact/<%= prof.Contact_id %>"><button type="button" name="ContactDet">Contact</button></a></td>
+      <td><a href="/profile/delete/<%= prof.id %>"><button type="button" name="Delete">DELETE</button></a></td>
+      <td><a href="/profile/edit/<%= prof.id %>"><button type="button" name="Edit">EDIT</button></a></td>
+      </tr>
+      <%})%>
+    </table>
+
+    <form action="/profile" method="POST">
+    <input type="text" name="Username" value="" placeholder="Username">
+    <br><br>
+    <input type="text" name="Password" value="" placeholder="Password">
+    <br><br>
+      <select name = "Contact_id">
+      <option value "">
+        -- Select ID Contact --
+      </option>
+
+      <% dataCont.forEach( cont => { %>
+      <option value ="<%= cont.id %>">
+      <%= cont.Name %>
+      </option>
+      <% }) %>
+    </select>
+      <input type="submit" value="Submit">
+    </center>
+    </form>
+  </body>
+</html>
