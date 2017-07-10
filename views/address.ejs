@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Address</title>
+  </head>
+  <body>
+    <h1>Address Input</h1>
+    <table border="2">
+      <tr>
+        <th>id</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>Postal Code</th>
+        <th>Contact Id</th>
+        <th>Contact Name</th>
+      </tr>
+      <% addressData.forEach(addresses => {%>
+        <tr>
+          <td>
+            <%=addresses.id %>
+          </td>
+          <td>
+            <%=addresses.street%>
+          </td>
+          <td>
+            <%=addresses.city%>
+          </td>
+          <td>
+            <%=addresses.zipCode%>
+          </td>
+          <td>
+              <%=addresses.contact_id%>
+          </td>
+          <td><%=addresses.name%></td>
+
+          <td>
+            <a href="/address/edit/<%=addresses.id %>">Edit</a>
+            <a href="/address/delete/<%=addresses.id %>">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+    <br>
+    <form action="/address" method="post">
+      <input type="text" name="street" placeholder="Street">
+      <input type="text" name="city" placeholder="City">
+      <input type="text" name="postalCode" placeholder="Post Code">
+      <select  name="addressList" >
+        <%contactName.forEach(kontak => {%>
+          <option value="<%=kontak.id%>"><%=kontak.name%></option>
+        <%})%>
+      </select>
+      <button type="submit" name="button">Submit</button>
+    </form>
+    <h2><a href="http://localhost:3000">Home</a></h2>
+  </body>
+</html>

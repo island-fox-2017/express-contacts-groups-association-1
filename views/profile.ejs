@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+  </head>
+  <body>
+    <h1>Profile Page</h1>
+    <table border="2">
+      <tr>
+        <th>id</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Contact ID</th>
+        <th>Nama Contacts</th>
+      </tr>
+      <tr>
+        <%profileInput.forEach(profile => {%>
+          <tr>
+            <td><%=profile.id%></td>
+            <td><%=profile.username%></td>
+            <td><%=profile.password%></td>
+            <td><%=profile.contact_id%></td>
+            <td><%=profile.name%></td>
+            <td> <a href="/profile/edit/<%=profile.id%>">Edit</a>
+                 <a href="/profile/delete/<%=profile.id%>">Delete</a>
+            </td>
+          </tr>
+        <%})%>
+      </tr>
+    </table>
+    <br>
+
+    <br>
+    <form  action="/profile" method="post">
+      <input type="text" name="username" placeholder="username">
+      <input type="text" name="password" placeholder="password">
+      <select  name="contactsList" >
+        <%contactName.forEach(kontak => {%>
+          <option value="<%=kontak.id%>"><%=kontak.name%></option>
+        <%})%>
+      </select>
+      <!-- <input type="text" name="contact_id" placeholder="contact id"> -->
+      <button type="submit" name="button" >Submit</button>
+    </form>
+    <br>
+    <h2><a href="http://localhost:3000">Home</a></h2>
+  </body>
+</html>
