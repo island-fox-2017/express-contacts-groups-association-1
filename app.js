@@ -90,6 +90,14 @@ app.get('/contacts/delete/:id', function(req, res){
   res.redirect(`/contacts`)
 })
 
+app.get('/contacts/:id/address', function(req, res){
+  db.all(`select address.id, address.street, address.city, address.zip_code from Address join Contacts on contacts_id = Contacts.id where contacts_id = '${req.params.id}'`, function (err, data){
+    res.render('show_addresses', {header: 'This is show address by id page',data_address : data})
+  });
+})
+
+
+
 //routing groups
 
 app.get('/input_data_groups', function(req, res){

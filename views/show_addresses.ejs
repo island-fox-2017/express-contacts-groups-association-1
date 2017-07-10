@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>show addresses page</title>
+  </head>
+  <body>
+    <h1><%= header %></h1>
+    <table border="1">
+      <tr>
+      <th>Id</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>Zip Code</th>
+      </tr>
+    <% data_address.forEach( add => { %>
+      <tr>
+      <td><%= add.id %></td>
+      <td><%= add.street %></td>
+      <td><%= add.city %></td>
+      <td><%= add.zip_code %></td>
+      </tr>
+    <% }) %>
+  </table>
+    <br>
+    <a href="/contacts">Contacts</a>
+  </body>
+</html>
