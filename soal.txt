@@ -1,3 +1,5 @@
+/**
+/** EXPRESS CONTACTS-GROUPS
 ---------------------------
 Buatlah sebuah aplikasi sederhana menggunakan Express JS dan SQLITE3 untuk
 menampilkan list Contact&Group, menambah data Contact&Group,
@@ -31,3 +33,4 @@ GET    | /groups/delete/:id   | Menghapus data group berdasarkan id
 
 - Release 2
   AKAN DIBERITAHUKAN SETELAH LECTURE SIANG
+**/
