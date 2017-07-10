@@ -12,7 +12,8 @@
         <th>Street</th>
         <th>City</th>
         <th>Zip Code</th>
-        <th>Contact Id</th>
+        <th>Name</th>
+        <th>Company</th>
       </tr>
       <tr>
         <% data_addresses.forEach( data => { %>
@@ -20,7 +21,8 @@
           <td><%= data.street %></td>
           <td><%= data.city %></td>
           <td><%= data.zip_code %></td>
-          <td><%= data.contacts_id %></td>
+          <td><%= data.name %></td>
+          <td><%= data.company %></td>
         <td>
         <a href="/address/edit/<%= data.id %>">edit</a>
         <a href="/address/delete/<%= data.id %>">delete</a>
@@ -44,7 +46,7 @@
           <td><input type="text" name="zip_code" placeholder="input zip code"></td>
         </tr>
         <tr>
-          <td>Contact id:</td>
+          <td></td>
           <td>
             <select name="contacts_id">
               <% data_contacts.forEach( dt =>{ %>
