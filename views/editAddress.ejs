@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>Edit Form</h2>
+    <h2></h2>
+    <form action = "/address/edit/:id" method="POST" >
+      <input type="text" name="id" value="<%=editAddress[0].id %>">
+      <input type="text" name="street" value="<%=editAddress[0].street%>">
+      <input type="text" name="city" value="<%=editAddress[0].city%>">
+      <input type="text" name="postalCode" value="<%=editAddress[0].zipCode%>">
+      <input type="text" name="contact_id" value="<%=editAddress[0].contact_id%>">
+      <select  name="addressList" >
+        <%contactName.forEach(kontak => {%>
+          <option value="<%=kontak.id%>"><%=editAddress[0].name%></option>
+        <%})%>
+      </select>
+      <button type="submit" name="button">Submit</button>
+    </form>
+  </body>
+</html>

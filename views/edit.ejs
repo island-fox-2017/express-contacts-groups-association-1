@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>edit</title>
+  </head>
+  <body>
+    <h2>Edit Form</h2>
+    <h2></h2>
+    <form action = "/contacts/edit/:id" method="POST" >
+        <input type="text" name="id" value = "<%= editInput[0].id   %>" >
+        <input type="text" name="name" value = "<%= editInput[0].name   %>" >
+        <input type="text" name="company" value = "<%= editInput[0].company   %>" >
+        <input type="text" name="phone" value = "<%= editInput[0].telp_number   %>">
+        <input type="text" name="email" value = "<%= editInput[0].email   %>">
+        <button type="submit" name="button" >Submit</button>
+    </form>
+  </body>
+</html>

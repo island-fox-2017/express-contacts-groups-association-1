@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Group</title>
+  </head>
+  <body>
+    <h1>Group Name Page</h1>
+    <br>
+    <table>
+      <tr>
+        <th>id</th>
+        <th>Group Name</th>
+      </tr>
+      <% groupInput.forEach(group => { %>
+        <tr>
+          <th><%= group.id%></th>
+          <th><%= group.name_of_group%></th>
+          <td>
+            <a href="/groups/edit/<%=group.id %>">Edit</a>
+            <a href="/groups/delete/<%=group.id %>">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+    <form action = "/groups" method="POST" >
+        <input type="text" name="groupName" placeholder="Group Name">
+        <button type="submit" name="button" >Submit</button>
+    </form>
+    <h2><a href="http://localhost:3000">Home</a></h2>
+  </body>
+</html>

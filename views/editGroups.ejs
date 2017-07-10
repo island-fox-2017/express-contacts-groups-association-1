@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>Edit Form</h2>
+    <h2></h2>
+    <form action = "/groups/edit/:id" method="POST" >
+        <input type="text" name="id" value = "<%= editGroups[0].id   %>" >
+        <input type="text" name="name" value = "<%= editGroups[0].name_of_group   %>" >
+        <button type="submit" name="button" >Submit</button>
+    </form>
+  </body>
+</html>
