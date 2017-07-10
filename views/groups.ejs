@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <br>
+    <center>
+      <h1>Groups List</h1>
+      <h3>Express JS dan SQLITE3 App</h3><br>
+      <a href="../"><input type="submit" value="Home"></a> &nbsp;
+      <!-- <a href="/contacts/add"><input type="submit" value="Add New Contact"></a><br> -->
+      <table class="table table-striped" width="500">
+        <thead>
+          <th>No</th>
+          <th>Group ID</th>
+          <th>Group Name</th>
+          <th>Action</th>
+        </thead>
+        <% var i = 1;
+        groups_list.forEach(getData => {
+
+          %>
+
+        <tr>
+          <td><%= i %> <% i += 1 %></td>
+          <td><%= getData.id %></td>
+          <td><%= getData.group_name %></td>
+
+
+          <td align='center'>
+            <a href="/groups/edit/<%= getData.id %>"><input type="submit" value="Edit" class="btn btn-info"></a>
+            <a href="/groups/delete/<%= getData.id %>"><input type="submit" value="Delete" class="btn btn-danger"></a>
+          </td>
+        </tr>
+
+        <% }) %>
+        <tr>
+          <td colspan="4" heigh="80" bgcolor="grey" align="center"><br>
+            <form action="/groups" method="post">
+              <input type="text" name="group_name" placeholder="Group Name">
+              <input type="submit" value="Add New Group">
+            </form>
+          </td>
+        </tr>
+      </table>
+    </center>
+
+  </body>
+</html>

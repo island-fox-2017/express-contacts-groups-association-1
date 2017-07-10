@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <br>
+    <center>
+      <h1>Contacts List</h1>
+      <h3>Express JS dan SQLITE3 App</h3><br>
+      <a href="../"><input type="submit" value="Home"></a> &nbsp;
+      <a href="/contacts/add"><input type="submit" value="Add New Contact"></a><br>
+      <table width='800' class="table table-striped table-hover">
+        <thead>
+          <th>No</th>
+          <th>Name</th>
+          <th>Company</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>Action</th>
+        </thead>
+        <% var i = 1;
+        contacts_list.forEach(getData => {
+
+          %>
+
+        <tr>
+          <td><%= i %> <% i += 1 %></td>
+          <td><%= getData.name %></td>
+          <td><%= getData.company %></td>
+          <td><%= getData.phone %></td>
+          <td><%= getData.email %></td>
+
+          <td align='center'>
+            <a href="/contacts/edit/<%= getData.id %>"><button type="button" name="button" class="btn btn-info">Edit</button></a>
+            <a href="/contacts/delete/<%= getData.id %>"><button type="button" name="button" class="btn btn-danger">Delete</button></a>
+            <a href="/contacts/show-address/<%= getData.id %>"><button type="button" name="button" class="btn btn-success">Show Address</button></a>
+          </td>
+        </tr>
+
+        <% }) %>
+      </table>
+    </center>
+
+  </body>
+</html>

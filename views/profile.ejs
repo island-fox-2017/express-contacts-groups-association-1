@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <br>
+    <center>
+      <h1>Profile List</h1>
+      <h3>Express JS dan SQLITE3 App</h3><br>
+      <a href="../"><input type="submit" value="Home"></a> &nbsp;
+      <a href="/profile/add"><input type="submit" value="Add New Profile"></a><br>
+    <br>
+      <table  class="table table-striped">
+        <thead>
+          <th width='50'  class="text-center">No</th>
+          <th  width='125'>Username</th>
+          <th width='125'>Password</th>
+          <th width='125'>Firstname</th>
+          <th width='125'>Lastname</th>
+          <th width='80'>Contact ID</th>
+          <th class="text-center">Action</th>
+        </thead>
+        <% var i = 1;
+        profile_list.forEach(getData => { %>
+
+        <tr>
+          <td  class="text-center"><%= i %> <% i += 1 %></td>
+          <td><%= getData.username %></td>
+          <td><%= getData.pass %></td>
+          <td><%= getData.firstname %></td>
+          <td><%= getData.lastname %></td>
+          <td  class="text-center"><%= getData.contact_id %></td>
+
+          <td  class="text-center">
+            <a href="/profile/<%= getData.id %>/edit"> <button type="button" class="btn btn-info"  name="button">Edit</button></a>
+            <a href="/profile/<%= getData.id %>/delete"><input type="submit" class="btn btn-danger" value="Delete"></a>
+            <a href="/profile/<%= getData.contact_id %>/contact_detail"><input type="submit" class="btn btn-success" value="View Detail"></a>
+          </td>
+        </tr>
+
+        <% }) %>
+      </table>
+    </center>
+
+  </body>
+</html>

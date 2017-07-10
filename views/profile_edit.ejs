@@ -1,0 +1,27 @@
+<br>
+<center>
+  <h1>Profile Editor</h1>
+  <h3>Express JS dan SQLITE3 App</h3><br>
+  <!-- <a href="../">Contact List</a> &nbsp; -->
+  <table width='200'>
+    <tr>
+      <td>
+        <% edit.forEach(getData => { %>
+        <form action="/profile/<%= getData.id %>/edit" method="post">
+          <label >Username</label><br>You can't change this!
+          <input type="text" name="username" value="<%= getData.username %>" disabled><br><br>
+          <label >Password</label><br>
+          <input type="password" name="password" value="<%= getData.pass %>"><br><br>
+          <label>First Name</label>
+          <input type="text" name="firstname" value="<%= getData.firstname %>"><br><br>
+          <label>Last Name</label>
+          <input type="text" name="lastname" value="<%= getData.lastname %>"><br><br>
+          <label >Contact ID</label><br>You can't change this!
+          <input type="text" name="contact_id" value="<%= getData.contact_id %>" disabled><br><br>
+          <button type="submit" name="button">Update Profile</button>
+        </form>
+        <% }) %>
+      </td>
+    </tr>
+  </table>
+</center>
