@@ -34,7 +34,12 @@ function createTable () {
             contacts_id INTEGER)`
           );
   console.log('TABLE addresses SUCCESFULLY CREATED');
-          
+  
+  db.run(`CREATE TABLE IF NOT EXISTS contacts_groups (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            contacts_id INTEGER,
+            groups_id INTEGER)`
+          );          
 }
 
 createTable()
