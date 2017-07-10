@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Contacts</title>
+  </head>
+  <body>
+      <form action="/groups/edit/:<%= data_groups[0].id %>" method="post">
+      <input type="hidden" name="id" placeholder="ID" value="<%= data_groups[0].id %>">
+      <input type="text" name="name_of_group" placeholder="Your group name" value="<%= data_groups[0].name_of_group %>">
+
+      <button type="submit">Submit</button>
+    </form>
+  </br>
+  <a href="/groups">Cancel</a>
+  </body>
+</html>

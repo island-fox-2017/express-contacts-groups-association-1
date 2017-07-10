@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+<!--    <h3> <%= JSON.stringify(data_contacts) %></h3>-->
+      <table>
+        <tr>
+            <th>ID</th>
+            <th>Fullname</th>
+            <th>Company Name</th>
+            <th>Phone number</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+          
+        <% data_contacts.forEach(contact => { %>
+          <tr>
+            <td><%= contact.id %></td>
+            <td><%= contact.name %></td>
+            <td><%= contact.company %></td>
+            <td><%= contact.telp_number %></td>
+            <td><%= contact.email %></td>
+            <td><a href="/contacts/edit/<%= contact.id %>">Edit</a> <a href="/contacts/delete/<%= contact.id %>">Delete</a></td>
+        </tr>
+        <% }) %>
+      </table>
+      </br>
+      <form action="/contacts" method="post">
+      <input type="text" name="name" placeholder="Your full name" required>
+      <input type="text" name="company" placeholder="Your company name" required>
+      <input type="text" name="telp_number" placeholder="Your phone number" required>
+      <input type="text" name="email" placeholder="Your email address" required>
+      
+      <button type="submit">Submit</button>
+    </form>
+    </br>
+    <a href="/">Home</a>
+  </body>
+</html>

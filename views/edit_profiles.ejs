@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Profiles</title>
+  </head>
+  <body>
+       <h3> <%= JSON.stringify(data_contacts) %></h3>
+       <h3> <%= JSON.stringify(data_profiles) %></h3>
+      <form action="/profiles/edit/:<%= data_profiles[0].id %>" method="post">
+      <input type="hidden" name="id" placeholder="ID" value="<%= data_profiles[0].id %>">
+      <input type="text" name="username" placeholder="Your username" value="<%= data_profiles[0].username %>">
+      <input type="text" name="password" placeholder="Your password" value="<%= data_profiles[0].password %>">
+      <select name="contact_id">
+        <option value="<%= data_profiles[0].contact_id %>"><%= data_contacts[(data_profiles[0].contact_id-1)].name %></option>
+        <% data_contacts.forEach(contact => { %>
+          <option value="<%= contact.id %>"><%= contact.name %></option>
+        <% }) %>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+  </br>
+  <a href="/profiles">Cancel</a>
+  </body>
+</html>

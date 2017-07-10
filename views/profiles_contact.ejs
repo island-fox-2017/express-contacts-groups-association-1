@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profiles Contact</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+      <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+        </tr>
+
+        <% data_join.forEach(join => { %>
+          <tr>
+            <td><%= join.id %></td>
+            <td><%= join.name %></td>
+            <td><%= join.company %></td>
+            <td><%= join.telp_number %></td>
+            <td><%= join.email %></td>
+        </tr>
+        <% }) %>
+      </table>
+      </br>
+      <a href="/profiles">Profiles</a>
+      <!-- <form action="/profiles" method="post">
+      <input type="text" name="username" placeholder="Your username" required>
+      <input type="password" name="password" placeholder="Your password" required>
+      <input type="text" name="contact_id" placeholder="Your contact id" required>
+
+      <button type="submit">Submit</button>
+    </form> -->
+    </br>
+    <a href="/">Home</a>
+  </body>
+</html>
