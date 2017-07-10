@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Address Page</title>
+  </head>
+  <body>
+    <h1><%= header %></h1>
+    <table border="1">
+      <tr>
+        <th>Id</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>Zip Code</th>
+        <th>Contact Id</th>
+      </tr>
+      <tr>
+        <% data_addresses.forEach( data => { %>
+          <td><%= data.id %></td>
+          <td><%= data.street %></td>
+          <td><%= data.city %></td>
+          <td><%= data.zip_code %></td>
+          <td><%= data.contacts_id %></td>
+        <td>
+        <a href="/address/edit/<%= data.id %>">edit</a>
+        <a href="/address/delete/<%= data.id %>">delete</a>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+    <br>
+    <form action="/address" method="post">
+      <table>
+        <tr>
+        <td>Street:</td>  
+        <td><input type="text" name="street" placeholder="input street"></td>
+        </tr>
+        <tr>
+          <td>City:</td>
+          <td><input type="text" name="city" placeholder="input city"></td>
+        </tr>
+        <tr>
+          <td>Zip Code:</td>
+          <td><input type="text" name="zip_code" placeholder="input zip code"></td>
+        </tr>
+        <tr>
+          <td>Contact id:</td>
+          <td>
+            <select name="contacts_id">
+              <% data_contacts.forEach( dt =>{ %>
+                <option value="<%=dt.id %>">(<%= dt.id %>). <%= dt.name %></option>
+              <% }) %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+    </form>
+    <br>
+    <a href="/">Index</a>
+  </body>
+</html>

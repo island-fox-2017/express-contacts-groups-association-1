@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>edit profiles page</title>
+  </head>
+  <body>
+    <h1><%= header %></h1>
+    <form action="/profiles/edit/<%=data_profiles[0].id %>" method="post">
+      <table>
+        <tr>
+          <td>Username:</td>
+          <td><input type="text" name="username" value="<%=data_profiles[0].username %>"></td>
+        </tr>
+        <tr>
+          <td>Password:</td>
+          <td><input type="text" name="password" value="<%=data_profiles[0].password %>"></td>
+        </tr>
+        <tr>
+          <td>Contacts Id:</td>
+          <td>
+            <select name="contacts_id">
+              <% data_contacts.forEach( dt =>{ %>
+                <option value="<%=dt.id %>"><%= dt.name %></option>
+              <% }) %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+      
+    </form>
+  </body>
+</html>
