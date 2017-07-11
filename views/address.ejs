@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Profile</title>
+  <title>Address</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -23,34 +23,30 @@
   </div>
   
   <div class="container">
-    <h3>Show Data Profile</h3>
+    <h3>Show Data Contact Address</h3>
     <br>    
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>ID Profile</th>
-        <th>Username</th>
-        <th>Password</th>
-        <th>Contact ID</th>
+        <th>ID Address</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>ZIP Code</th>
         <th>Contact Name</th>
         <th>Company</th>
-        <th>Phone Number</th>
-        <th>Email</th>
         <th>Option</th>
       </tr>
     </thead>
     <tbody>
-      <% data_profile.forEach(profile => { %>
+      <% data_address.forEach(address => { %>
       <tr>
-        <td><%= profile.id%></td>
-        <td><%= profile.username%></td>
-        <td><%= profile.password%></td>
-        <td><%= profile.Contact_id%></td>
-        <td><%= profile.name%></td>
-        <td><%= profile.company%></td>
-        <td><%= profile.telp_number%></td>
-        <td><%= profile.email%></td>
-        <td><a href="/profiles/edit/<%=profile.id%>">Edit</a> || <a href="/profiles/delete/<%=profile.id%>" onclick="return confirm('Are you sure you want to delete this data?');">Delete</a></td>
+        <td><%= address.id%></td>
+        <td><%= address.street%></td>
+        <td><%= address.city%></td>
+        <td><%= address.zip_code%></td>
+        <td><%= address.name%></td>
+        <td><%= address.company%></td>
+        <td><a href="/address/edit/<%=address.id%>">Edit</a> || <a href="/address/delete/<%=address.id%>" onclick="return confirm('Are you sure you want to delete this data?');">Delete</a></td>
       </tr>
       <% })%>
     </tbody>
@@ -59,26 +55,36 @@
 
 
 <div class="container">
-<form class="form-inline" action="/profiles" method="post">
+<form class="form-inline" action="/address" method="post">
   
   <div class="form-group">
-    <label>Username : </label>
-    <input class="form-control" type="text" name="saveUsername" value="">
+    <label>Street : </label>
+    <input class="form-control" type="text" name="saveStreet" value="">
 </div>
+
 <div class="form-group">
-    <label>Password : </label>
-  <input class="form-control" type="text" name="savePassword" value="">
+    <label>City : </label>
+  <input class="form-control" type="text" name="saveCity" value="">
 </div>
+
+<div class="form-group">
+    <label>ZIP Code : </label>
+  <input class="form-control" type="text" name="saveZIP" value="">
+</div>
+
 <div class="form-group">
   <label>Name : </label>
-  <select name="saveContactID" class="form-control">
+  <select name="saveContactsID" class="form-control">
     <% data_contact.forEach(contact => { %>
-    <option value="<%= contact.id%>" selected><%= contact.name%></option>
+    <option value="<%- contact.id%>" selected>
+      <%- contact.name%>
+    </option>
       <% }) %>
+      <option value=""></option>
   </select>
 </div>
 
-  <button type="submit" name="button" class="btn btn-default">Add New Profile</button>
+  <button type="submit" name="button" class="btn btn-default">Add New Address</button>
 </form>
 </div>
 

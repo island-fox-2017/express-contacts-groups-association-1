@@ -24,7 +24,7 @@ function createTable(){
     street VARCHAR(100),
     city VARCHAR(50),
     zip_code VARCHAR (10),
-    Contact_id INTEGER);`)
+    ContactId INTEGER);`)
 };
 
 function insertData() {
@@ -39,5 +39,5 @@ function insertDataGroup(){
 }
 
 // insertDataGroup();
-// createTable();
+createTable();
 // insertData()
