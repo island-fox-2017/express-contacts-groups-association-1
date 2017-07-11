@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>INFO KONTAK</title>
+  </head>
+  <body>
+    <center>
+    <h1>PROFILE</h1>
+    <!-- <h2><%=data_pro.id%></h2> -->
+    <a href = "/home/profile/add"> <button type="button" name="buttons">Tambah Profile</button></a><br><br>
+    <table border = "1">
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Contact_ID</th>
+      <th>Edit</th>
+      <th>Hapus</th>
+      <th>Detail</th>
+    </tr>
+    <%data_pro.forEach(dataPro => {%>
+      <tr>
+        <td><%=dataPro.id%></td>
+        <td><%=dataPro.username%></td>
+        <td><%=dataPro.password%></td>
+        <td><%=dataPro.contact_id%></td>
+        <td><a href="/home/profile/edit/<%=dataPro.id%>"> <button type="button" name="buttons">Ganti</button></a></td>
+        <td><a href="/home/profile/delete/<%=dataPro.id%>"> <button type="button" name="buttons">Hapus</button></a></td>
+        <td><a href="/home/profile/contacts/<%=dataPro.contact_id%>"><button type="button" name="button">Go Detail</button></a></td>
+      </tr>
+    <%})%>
+  </table>
+</center>
+  </body>
+</html>

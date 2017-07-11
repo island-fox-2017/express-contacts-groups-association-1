@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Data Kontak</title>
+  </head>
+  <body>
+    <center>
+    <form action="/home/profile/edit/<%=data_pro[0].id%>" method = "POST">
+      <br>
+      Username:<br>
+      <input type="text" name="username" value="<%=data_pro[0].username%>">
+      <br><br>
+      Password:<br>
+      <input type="text" name="password" value="<%=data_pro[0].password%>">
+      <br><br>
+      Contact_ID:<br>
+      <select name = "contact_id">
+        <%data_Con.forEach(dataCon => {%>
+        <option value="<%=dataCon.id%>"><%=dataCon.name%></option>
+        <%})%>
+      </select>
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </center>
+  </body>
+</html>

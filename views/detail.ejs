@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>INFO KONTAK</title>
+  </head>
+  <body>
+    <%=JSON.stringify(data_cont)%>
+    <center>
+    <h1>INFO KONTAK</h1>
+    <table border = "1">
+    <tr>
+      <th>ID</th>
+      <td>Username</td>
+      <td>Password</td>
+      <td>Contact_ID</td>
+      <th>Nama</th>
+      <th>Company</th>
+      <th>Telepon</th>
+      <th>Email</th>
+      <th>Edit</th>
+      <th>Hapus</th>
+    </tr>
+    <%data_cont.forEach(dataShow => {%>
+      <tr>
+        <td><%=dataShow.id%></td>
+        <td><%=dataShow.username%></td>
+        <td><%=dataShow.password%></td>
+        <td><%=dataShow.contact_id%></td>
+        <td><%=dataShow.name%></td>
+        <td><%=dataShow.company%></td>
+        <td><%=dataShow.telp_number%></td>
+        <td><%=dataShow.email%></td>
+        <td><a href="/home/profile/contacts/edit/<%=dataShow.id%>"> <button type="button" name="buttons">Ganti</button></a></td>
+        <td><a href="/home/profile/contacts/delete/<%=dataShow.id%>"> <button type="button" name="buttons">Hapus</button></a></td>
+      </tr>
+    <%})%>
+  </table>
+</center>
+  </body>
+</html>
