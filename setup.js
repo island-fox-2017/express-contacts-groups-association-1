@@ -71,4 +71,4 @@ function alterContactsTable() {
 //createProfileTable();
 //createAddressTable();
 //createContactGroupTable();
-alterContactsTable();
+//alterContactsTable();

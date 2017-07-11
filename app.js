@@ -2,9 +2,16 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3');
+const DbModel = require('./models/DbModel');
+const Contact = require('./models/Contacts');
+const Group = require('./models/Groups');
+const Profile = require('./models/Profiles');
+const Address = require('./models/Addresses');
+const Contact_Group = require('./models/Contacts_Groups');
 
 let myQuery = require('./myQuery.js');
 
+let dbModel = new DbModel('./db/data.db');
 let db = new sqlite3.Database('./db/data.db');
 let app = express();
 
@@ -18,15 +25,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get('/', function (req, res) {
   res.render('index');
 });
+
+app.get('/contacts', function(req, res) {
+  Contact.showData(dbModel.connection, function(err, rows) {
+    if(!err) {
+      //res.send(rows);
+      res.render('contacts', {datas: rows});
+    }
+  });
+});
+
+// app.get('/contacts', function (req, res) {
+//   res.send(Contact.callContactPromise());
+// });
+
 /*
-SELECT
-  Contacts.*,
-  Profiles.username
-FROM
-  Contacts
-LEFT JOIN Profiles ON
-  Contacts.id = Profiles.contact_id;
-*/
 app.get('/contacts', function (req, res) {
   db.all(`
     SELECT * FROM Contacts;
@@ -41,7 +54,6 @@ app.get('/contacts', function (req, res) {
             ON g.id = cg.group_id
           JOIN Contacts AS c
             ON c.id = cg.contact_id
-
           ;
           `, function(err, rows2) {
             if(!err) {
@@ -51,141 +63,98 @@ app.get('/contacts', function (req, res) {
           });
       }
     });
+*/
+  //Contact.showContact(dbModel.connection, );
+
+  //var datas = Contact.callContactPromise()
+/*
+  Contact.showAll(dbModel.connection, function(err, rows) {
+    if(!err) {
+      res.render('contacts', {datas: rows});
+    }
+  });
 
 
-});
+*/
+//});
 
 app.post('/contacts', function (req, res) {
-  let objStartup = {}
-  objStartup.name = req.body.name;
-  objStartup.company = req.body.company;
-  objStartup.telp_number = req.body.telp_number;
-  objStartup.email = req.body.email;
-
-  myQuery.insertData(objStartup);
-  //myQuery.showData();
+  Contact.insertData(dbModel.connection, req.body);
   res.redirect('/contacts')
 });
 
 app.get('/contacts/delete/:id', function(req, res) {
-  let deleteId = req.params.id;
-  myQuery.deleteData(deleteId);
+  Contact.deleteData(dbModel.connection, req.params.id);
   res.redirect('/contacts');
 });
 
 app.get('/contacts/edit/:id', function (req, res) {
-  let editId = req.params.id;
-
-  db.all(`
-    SELECT * FROM Contacts WHERE id = ${editId};
-    `, function (err, rows) {
-      if (!err) {
-        res.render('edit', {data: rows});
-      }
-    });
+  Contact.editData(dbModel.connection, req.params.id, function(err, rows) {
+    if(!err) {
+      res.render('edit', {data: rows});
+    }
+  });
 });
 
 app.post('/contacts/edit/:id', function (req, res) {
-  let objEdit = {};
-  objEdit.id = req.body.id;
-  objEdit.name = req.body.name;
-  objEdit.company = req.body.company;
-  objEdit.telp_number = req.body.telp_number;
-  objEdit.email = req.body.email;
-
-  myQuery.editData(objEdit);
+  Contact.updateData(dbModel.connection, req.body);
   res.redirect('/contacts');
 });
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Groups
-/*
-SELECT
-  *
-FROM
-  Contacts AS c
-JOIN Contacts_Groups AS cg
-  ON c.id = cg.contact_id
-JOIN Groups AS g
-  ON g.id = cg.group_id
-*/
+
 app.get('/groups', function (req, res) {
-  db.all(`
-    SELECT
-      g.*,
-      cg.group_id,
-      cg.contact_id,
-      c.name
-    FROM
-      Groups AS g
-    LEFT JOIN Contacts_Groups AS cg
-      ON g.id = cg.group_id
-    LEFT JOIN Contacts AS c
-      ON c.id = cg.contact_id
-    ;
-    `, function(err, rows) {
-      if(!err) {
-        res.render('groups', {datas: rows});
-        //res.send(rows);
-      }
-    });
+  Group.showData(dbModel.connection, function(err, rows) {
+    if(!err) {
+      res.render('groups', {datas: rows});
+    }
+  })
 });
 
 app.post('/groups', function (req, res) {
-  myQuery.insertData2(req.body);
+  Group.insertData(dbModel.connection, req.body);
   res.redirect('/groups')
 });
 
 app.get('/groups/delete/:id', function(req, res) {
-  let deleteId = req.params.id;
-  myQuery.deleteData2(deleteId);
+  Group.deleteData(dbModel.connection, req.params.id);
   res.redirect('/groups');
 });
 
 app.get('/groups/edit/:id', function (req, res) {
-  let editId = req.params.id;
-
-  db.all(`
-    SELECT * FROM Groups WHERE id = ${editId};
-    `, function (err, rows) {
-      if (!err) {
-        res.render('edit_groups', {data: rows});
-      }
-    });
+  Group.editData(dbModel.connection, req.params.id, function(err, rows) {
+    if(!err) {
+      res.render('edit_groups', {data: rows});
+    }
+  });
 });
 
 app.post('/groups/edit/:id', function (req, res) {
-  let objEdit = {};
-  objEdit.id = req.body.id;
-  objEdit.name_of_group = req.body.name_of_group;
-
-  myQuery.editData2(objEdit);
+  Group.updateData(dbModel.connection, req.body);
   res.redirect('/groups');
 });
 
-/*
-SELECT
-  *
-FROM
-  Contacts_Groups
-JOIN Contacts ON
-  Contacts_Groups.contact_id = Contacts.id
-JOIN Groups ON
-  Contacts_Groups.group_id = Groups.id;
-*/
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Contacts-Groups
+
 app.get('/contacts-groups', function(req, res) {
-  db.all(`
-    SELECT * FROM Contacts_Groups;
-    `, function(err, rows) {
-      if(!err) {
-        res.render('contacts-groups', {datas: rows});
-      }
-    });
+  Contact_Group.showData(dbModel.connection, function(err, rows) {
+    if(!err) {
+      res.render('contacts-groups', {datas: rows});
+    }
+  });
 });
 
 app.post('/contacts-groups', function(req, res) {
-  myQuery.insertData5(req.body);
+  Contact_Group.insertData(dbModel.connection, req.body);
+  res.redirect('/contacts-groups');
+});
+
+app.get('/contacts-groups/delete/:id', function (req, res) {
+  Contact_Group.deleteData(dbModel.connection, req.params.id);
   res.redirect('/contacts-groups');
 });
 
@@ -194,8 +163,6 @@ app.post('/contacts-groups', function(req, res) {
 // Profile Router
 
 app.get('/profiles', function(req, res) {
-  let profileId = req.params.id;
-
   db.all(`
     SELECT * FROM Profiles;
     `, function(err, rows) {
@@ -206,60 +173,45 @@ app.get('/profiles', function(req, res) {
             if(!err) {
               res.render('profiles', {datas: rows, selectContact: rows2});
             }
-          });
+        });
       }
     });
 });
 
 app.post('/profiles', function (req, res) {
-  myQuery.insertData3(req.body);
+  Profile.insertData(dbModel.connection, req.body);
   res.redirect('/profiles');
 });
 
 app.get('/profiles/delete/:id', function(req, res) {
-  let profileId = req.params.id;
-  myQuery.deleteData3(profileId);
+  Profile.deleteData(dbModel.connection, req.params.id);
   res.redirect('/profiles');
 });
 
 app.get('/profiles/edit/:id', function(req, res) {
-  let editId = req.params.id;
-
-  db.all(`
-    SELECT * FROM Profiles WHERE id = ${editId};
-    `, function(err, rows) {
-      if(!err) {
-        res.render('edit_profiles', {datas: rows});
-        //res.send(rows);
-      }
-    });
+  Profile.editData(dbModel.connection, req.params.id, function(err, rows) {
+    if(!err) {
+      res.render('edit_profiles', {datas: rows});
+    }
+  });
 });
 
 app.post('/profiles/edit/:id', function(req, res) {
-  myQuery.editData3(req.body);
+  Profile.updateData(dbModel.connection, req.body);
   res.redirect('/profiles');
 });
 
 app.get('/profiles/:id', function(req, res) {
-  let profileId = req.params.id;
-
-  db.all(`
-    SELECT
-      Contacts.*,
-      Profiles.username,
-      Profiles.password
-    FROM
-      Contacts
-    LEFT JOIN Profiles ON
-      Contacts.id = Profiles.contact_id
-    WHERE
-      Contacts.id = ${profileId};
-    `, function (err, rows) {
-      if(!err) {
-        res.render('profileShow', {datas: rows});
-      }
-    });
+  Profile.showProfileForContact(dbModel.connection, req.params.id, function (err, rows) {
+    if(!err) {
+      res.render('profileShow', {datas: rows});
+    }
+  })
 });
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Address
 
 app.get('/address', function(req, res) {
   db.all(`
@@ -278,51 +230,34 @@ app.get('/address', function(req, res) {
 });
 
 app.post('/address', function(req, res) {
-  myQuery.insertData4(req.body);
+  Address.insertData(dbModel.connection, req.body);
   res.redirect('/address');
 });
 
 app.get('/address/delete/:id', function(req, res) {
-  let deleteId = req.params.id;
-  myQuery.deleteData4(deleteId);
+  Address.deleteData(dbModel.connection, req.params.id);
   res.redirect('/address');
 });
 
 app.get('/address/edit/:id', function(req, res) {
-  let editId = req.params.id;
-
-  db.all(`
-    SELECT * FROM Address WHERE id = ${editId};
-    `, function(err, rows) {
-      if(!err) {
-        res.render('edit_address', {datas: rows});
-      }
-    });
+  Address.editData(dbModel.connection, req.params.id, function(err, rows) {
+    if(!err) {
+      res.render('edit_address', {datas: rows});
+    }
+  });
 });
 
 app.post('/address/edit/:id', function (req, res) {
-  myQuery.editData4(req.body);
+  Address.updateData(dbModel.connection, req.body);
   res.redirect('/address');
 });
 
 app.get('/address/:id', function(req, res) {
-  let showId = req.params.id;
-
-  db.all(`
-    SELECT
-      Contacts.*,
-      Address.street, Address.city, Address.zip_code
-    FROM
-      Contacts
-    JOIN Address ON
-      Contacts.id = Address.contact_id
-    WHERE
-      Address.contact_id = ${showId};
-    `, function(err, rows) {
-      if(!err) {
-        res.render('addressShow', {datas: rows});
-      }
-    });
+  Address.showAddressForContact(dbModel.connection, req.params.id, function(err, rows) {
+    if(!err) {
+      res.render('addressShow', {datas: rows});
+    }
+  })
 });
 
 app.listen(3002);

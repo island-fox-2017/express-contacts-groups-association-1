@@ -66,6 +66,9 @@ function editData2(obj) {
   `);
 }
 
+
+// Profiles
+
 function insertData3(obj) {
   db.run(`
     INSERT INTO Profiles (username, password, contact_id)
@@ -88,6 +91,9 @@ function editData3(obj) {
   `);
 }
 
+
+// Address
+
 function insertData4(obj) {
   db.run(`
     INSERT INTO Address (street, city, zip_code, contact_id)
@@ -108,6 +114,10 @@ function editData4(obj) {
     WHERE id = ${obj.id};
     `);
 }
+
+
+
+// Contact Group
 
 function insertData5(obj) {
   db.run(`

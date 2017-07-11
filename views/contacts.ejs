@@ -34,11 +34,12 @@
           <th><%= i.telp_number %></th>
           <th><%= i.email %></th>
           <th>
-            <% slice.forEach(j => {
+            <%/* slice.forEach(j => {
               if (i.id === j.id) { %>
                 <%= j.name_of_group %>,
             <%  }
-             }) %>
+          }) */%>
+            <%= i.name_of_group %>
           </th>
           <th><a href=/profiles/<%= i.id %>>Profiles</a></th>
           <th><a href=/address/<%= i.id %>>Address</a></th>
@@ -59,8 +60,10 @@
     <span>< Scroll To Browse ></span>
     <div class="carousel">
       <a class="carousel-item" href="/"><h2>Home</h2></a>
+      <a class="carousel-item" href="/groups"><h2>Groups</h2></a>
       <a class="carousel-item" href="/profiles"><h2>Profiles</h2></a>
       <a class="carousel-item" href="/address"><h2>Address</h2></a>
+      <a class="carousel-item" href="/contacts-groups"><h2>Contacts Groups</h2></a>
     </div>
 
   </div>
