@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Address Page</title>
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  </head>
+  <body>
+    <h1><center><i class="fa fa-pencil"> Edit Address Contact</i></center></h1>
+    <div>
+      <form id="main-form" class="modal-content animate" name="mainForm" action="/addresses/update/<%= data[0].id %>" method="post">
+        <div class="container">
+          <label><b>ID</b></label>
+          <input type="text" name="id" value="<%= data[0].id %>" disabled/>
+          <label><b>Street</b></label>
+          <input type="text" name="street" value="<%= data[0].street %>" />
+          <label><b>City</b></label>
+          <input type="text" name="city" value="<%= data[0].city %>" />
+          <label><b>Zip Code</b></label>
+          <input type="text" name="zip_code" value="<%= data[0].zip_code %>" />
+          <label><b>ID Contact</b></label>
+          <input type="text" name="contact_id" value="<%= data[0].contact_id %>" />
+          <div class="clearfix">
+            <button id="cancelbtn" class="cancelbtn" onclick="window.location='/addresses'">Cancel</button>
+            <button type="submit" class="submitbtn">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
