@@ -3,20 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>My Contacts</title>
+    <link type="text/css" rel="stylesheet" href="/style.css">
   </head>
 
   <body>
 
     <!-- <%=JSON.stringify(contact_data)%> -->
-    <table>
+    <table border="1">
       <tr>
         <th> Contact ID </th>
         <th> Name</th>
         <th> Company</th>
         <th> Phone Number</th>
         <th> Email</th>
-
-        <th>
       </tr>
       <% contact_data.forEach(contact => { %>
         <tr>
@@ -25,16 +24,11 @@
           <td><%= contact.company %></td>
           <td><%= contact.telp_number %></td>
           <td><%= contact.email %></td>
-
-          <td><%= contact.username %></td>
-          <td><%= contact.password %></td>
-          <td><%= contact.contact_id %></td>
           <td><a href="contacts/edit/<%= contact.id %>">edit</a></td>
           <td><a href="contacts/delete/<%= contact.id %>">delete</a></td>
           <td><a href="contacts/detail-profile/<%= contact.id %>">show profil</a></td>
           <td><a href="contacts/detail-address/<%= contact.id %>">show address</a></td>
         </tr>
-
      <% }) %>
     </table>
     <br>

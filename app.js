@@ -7,6 +7,10 @@ var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('./db/data.db');
 
 app.set('view engine', 'ejs');
+var path_name = path.join(__dirname, 'public');
+var express_static = express.static(path_name);
+app.use(express_static);
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
@@ -14,13 +18,13 @@ app.get('/', function (req, res) {
   res.render('index')
 })
 
-app.get('/create_table', function (req, res) {
-    // db.run("CREATE TABLE IF NOT EXISTS Contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, name text, company text, telp_number int, email text)");
-    // db.run("CREATE TABLE IF NOT EXISTS Groups (id INTEGER PRIMARY KEY AUTOINCREMENT, name_of_group text)");
-    db.run("CREATE TABLE IF NOT EXISTS Profile (id INTEGER PRIMARY KEY AUTOINCREMENT, username text, password text, contact_id INTEGER)");
-    db.run("CREATE TABLE IF NOT EXISTS Address (id INTEGER PRIMARY KEY AUTOINCREMENT, street text, city text, zip integer, contact_id INTEGER)");
-    res.send('table Contacts, Groups, Profile, & Address created');
-})
+// app.get('/create_table', function (req, res) {
+//     // db.run("CREATE TABLE IF NOT EXISTS Contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, name text, company text, telp_number int, email text)");
+//     // db.run("CREATE TABLE IF NOT EXISTS Groups (id INTEGER PRIMARY KEY AUTOINCREMENT, name_of_group text)");
+//     db.run("CREATE TABLE IF NOT EXISTS Profile (id INTEGER PRIMARY KEY AUTOINCREMENT, username text, password text, contact_id INTEGER)");
+//     db.run("CREATE TABLE IF NOT EXISTS Address (id INTEGER PRIMARY KEY AUTOINCREMENT, street text, city text, zip integer, contact_id INTEGER)");
+//     res.send('table Contacts, Groups, Profile, & Address created');
+// })
 
 // app.get('/create_table', function (req, res) {
 //     db.run("CREATE TABLE IF NOT EXISTS Groups (id INTEGER PRIMARY KEY AUTOINCREMENT, name_of_group text)")
