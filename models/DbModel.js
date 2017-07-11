@@ -72,18 +72,10 @@ class DbModel {
   alterContactsTable() {
     this.connection.run(`
       ALTER TABLE Contacts
-      ADD group_joined VARCHAR(255)
+      DROP group_joined
     `);
   }
-  
-}
 
-//createTableTest();
-//createContactsTable();
-//createGroupsTable();
-//createProfileTable();
-//createAddressTable();
-//createContactGroupTable();
-//alterContactsTable();
+}
 
 module.exports = DbModel

@@ -34,11 +34,11 @@
           <th><%= i.telp_number %></th>
           <th><%= i.email %></th>
           <th>
-            <%/* slice.forEach(j => {
+            <% slice.forEach(j => {
               if (i.id === j.id) { %>
                 <%= j.name_of_group %>,
             <%  }
-          }) */%>
+          }) %>
             <%= i.name_of_group %>
           </th>
           <th><a href=/profiles/<%= i.id %>>Profiles</a></th>

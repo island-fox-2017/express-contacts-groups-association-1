@@ -26,20 +26,20 @@ app.get('/', function (req, res) {
   res.render('index');
 });
 
-app.get('/contacts', function(req, res) {
-  Contact.showData(dbModel.connection, function(err, rows) {
-    if(!err) {
-      //res.send(rows);
-      res.render('contacts', {datas: rows});
-    }
-  });
-});
+// app.get('/contacts', function(req, res) {
+//   Contact.showData(dbModel.connection, function(err, rows) {
+//     if(!err) {
+//       //res.send(rows);
+//       res.render('contacts', {datas: rows});
+//     }
+//   });
+// });
 
 // app.get('/contacts', function (req, res) {
 //   res.send(Contact.callContactPromise());
 // });
 
-/*
+
 app.get('/contacts', function (req, res) {
   db.all(`
     SELECT * FROM Contacts;
@@ -63,7 +63,8 @@ app.get('/contacts', function (req, res) {
           });
       }
     });
-*/
+});
+
   //Contact.showContact(dbModel.connection, );
 
   //var datas = Contact.callContactPromise()
@@ -76,7 +77,7 @@ app.get('/contacts', function (req, res) {
 
 
 */
-//});
+
 
 app.post('/contacts', function (req, res) {
   Contact.insertData(dbModel.connection, req.body);

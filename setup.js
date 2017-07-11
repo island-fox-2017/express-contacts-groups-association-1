@@ -62,8 +62,8 @@ function createContactGroupTable() {
 function alterContactsTable() {
   db.run(`
     ALTER TABLE Contacts
-    ADD group_joined VARCHAR(255)
-    `);
+    DROP COLUMN group_joined;
+  `);
 }
 
 //createContactsTable();
@@ -71,4 +71,4 @@ function alterContactsTable() {
 //createProfileTable();
 //createAddressTable();
 //createContactGroupTable();
-//alterContactsTable();
+alterContactsTable();
