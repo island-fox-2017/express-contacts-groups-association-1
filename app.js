@@ -22,6 +22,7 @@ app.get('/contacts', function(req, res){
   })
 })
 
+
 app.post('/contacts', function(req, res){
   db.run(`INSERT INTO Contacts(name, company, telp_number, email) VALUES ('${req.body.saveName}', '${req.body.saveCompany}', '${req.body.savePhone}', '${req.body.saveEmail}');`);
   res.redirect('/contacts');
@@ -87,7 +88,7 @@ app.get('/profiles', function(req, res){
 })
 
 app.post('/profiles', function(req, res){
-  db.run(`INSERT INTO Profiles(username, password, Contact_id) VALUES ('${req.body.saveUsername}', '${req.body.savePassword}', '${req.body.saveContactID}');`)
+  db.run(`INSERT INTO Profiles(username, password, Contact_id) VALUES ('${req.body.saveUsername}', '${req.body.savePassword}', ${req.body.saveContactID});`)
   res.redirect('/profiles');
 })
 
@@ -111,7 +112,7 @@ app.get('/profiles/edit/:id', function(req, res, next){
 app.post('/profiles/edit/:id', function(req, res){
   db.run(`UPDATE Profiles SET username='${req.body.saveUsername}',
   password='${req.body.savePassword}',
-  Contact_id='${req.body.saveContactID}' WHERE id=${req.params.id};`)
+  Contact_id=${req.body.saveContactID} WHERE id=${req.params.id};`)
   res.redirect('/profiles')
 })
 
@@ -158,6 +159,113 @@ app.post('/address/edit/:id', function(req, res){
     id=${req.params.id};`);
     res.redirect('/address')
 })
+
+app.get('/contacts-groups', function(req, res){
+  db.all('SELECT * FROM Contacts_Groups', function(err, rows){
+    if(!err){
+      res.render('contacts-groups', {contact_group : rows})
+    }
+  })
+})
+
+app.post('/contacts-groups', function(req, res){
+  db.run(`INSERT INTO Contacts_Groups(Contacts_id, Groups_id) VALUES (${req.body.saveContacts_id}, ${req.body.saveGroups_id});`);
+  res.redirect('/contacts-groups');
+})
+
+app.get('/contacts-groups/delete/:id', function(req, res){
+  db.run(`DELETE FROM Contacts_Groups WHERE id=${req.params.id};`);
+  res.redirect('/contacts-groups');
+})
+
+app.get('/contacts-groups/edit/:id', function(req, res){
+  db.get(`SELECT * FROM Contacts_Groups WHERE id=${req.params.id};`, function(err, data){
+    res.render('editContactsGroups', {contactGroup : data})
+  });  
+});
+
+app.post('/contacts-groups/edit/:id', function(req, res){
+  db.run(`UPDATE Contacts_Groups SET Contacts_id='${req.body.saveContacts_id}',
+  Groups_id='${req.body.saveGroups_id}' WHERE
+  id='${req.params.id}';`);
+  res.redirect('/contacts-groups');
+})
+
+app.get('/groupsDetail', function(req, res){
+  db.all(`SELECT Groups.id, Contacts.name, Groups.name_of_group FROM ((Contacts_Groups INNER JOIN Contacts ON Contacts_Groups.Contacts_id = Contacts.id) INNER JOIN Groups ON Contacts_Groups.Groups_id = Groups.id);`, function(err, rows){
+    let datas = groupDetail(rows)
+    // console.log(datas);
+    res.render('groupsDetail',{data_group : datas})
+  })
+})
+
+function groupDetail(dataObject){
+  let result = [];
+  let check = {}
+  for(let i = 0; i < dataObject.length; i++){
+    let tempObj = {}
+      for(let j = 0; j < dataObject.length; j++){
+        if(!check[dataObject[i].name_of_group]){
+          tempObj['id'] = dataObject[i].id;
+          tempObj['name_of_group'] = dataObject[i].name_of_group;
+          tempObj['name'] = [];
+          check[dataObject[i].name_of_group] = true;
+          result.push(tempObj)
+        }
+      }
+  }
+
+for(let i = 0; i < result.length; i++){
+  for(let j = 0; j < dataObject.length; j++){
+    if(result[i].name_of_group == dataObject[j].name_of_group){
+      result[i].name.push(dataObject[j].name)
+    }
+  }
+}
+  return result;
+}
+
+
+
+app.get('/contactsDetail', function(req, res){
+  db.all(`SELECT Contacts.id, Contacts.name, Contacts.company, Contacts.telp_number, Contacts.email, Groups.name_of_group FROM ((Contacts_Groups INNER JOIN Contacts ON Contacts_Groups.Contacts_id = Contacts.id) INNER JOIN Groups ON Contacts_Groups.Groups_id = Groups.id);`, function(err, rows){
+    let datas = contactDetail(rows)
+    res.render('contactsDetail', {data_contact : datas})
+    // console.log(datas);
+  })
+})
+
+function contactDetail(obj) {
+  let result = [];
+  let check = {};
+  for(let i = 0; i < obj.length; i++){
+    let tempObj = {};
+      for(let j = 0; j < obj.length; j++){
+        if(!check[obj[i].name]){
+          tempObj['id'] = obj[i].id;
+          tempObj['name'] = obj[i].name;
+          tempObj['company'] = obj[i].company;
+          tempObj['telp_number'] = obj[i].telp_number;
+          tempObj['email'] = obj[i].email;
+          tempObj['name_of_group'] = [];
+          check[obj[i].name] = true;
+          result.push(tempObj)
+        }
+      }
+  }
+  
+  for(let i = 0; i < result.length; i++){
+    for(let j = 0; j < obj.length; j++){
+      if(result[i].name == obj[j].name){
+        result[i].name_of_group.push(obj[j].name_of_group);
+      }
+    }
+  }
+  return result;
+}
+
+
+
 
 
 app.listen(3000)

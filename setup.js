@@ -25,6 +25,11 @@ function createTable(){
     city VARCHAR(50),
     zip_code VARCHAR (10),
     ContactId INTEGER);`)
+    
+  db.run(`CREATE TABLE IF NOT EXISTS Contacts_Groups (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Contacts_id INTEGER,
+    Groups_id INTEGER);`);
 };
 
 function insertData() {

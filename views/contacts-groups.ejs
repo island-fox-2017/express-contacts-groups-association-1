@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Group</title>
+  <title>Contacts Group</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -25,22 +25,24 @@
     
     
     <div class="container">
-      <h3>Show Data Group</h3>
+      <h3>Show Data Contact Group</h3>
       <br>
     <table class="table table-hover">
       <thead>
         <tr>
           <th>ID</th>
-          <th>Name of Group</th>
+          <th>Contact ID</th>
+          <th>Group ID</th>
           <th>Option</th>
         </tr>
       </thead>
       <tbody>
-        <% data_group.forEach(data => { %>
+        <% contact_group.forEach(data => { %>
         <tr>
           <td><%= data.id%></td>
-          <td><%= data.name_of_group%></td>
-          <td><a href="/groups/edit/<%=data.id%>">Edit</a> || <a href="/groups/delete/<%=data.id%>" onclick="return confirm('Are you sure want to delete this group?');">Delete</a> || <a href="/groupsDetail">Show Detail Group</a></td>
+          <td><%= data.Contacts_id%></td>
+          <td><%= data.Groups_id%></td>
+          <td><a href="/contacts-groups/edit/<%=data.id%>">Edit</a> || <a href="/contacts-groups/delete/<%=data.id%>" onclick="return confirm('Are you sure want to delete this group?');">Delete</a></td>
         </tr>
         <% })%>
       </tbody>
@@ -48,12 +50,17 @@
     </div>
     
     <div class="container">    
-    <form class="form-inline" action="/groups" method="post">
+    <form class="form-inline" action="/contacts-groups" method="post">
       <div class="form-group">
-        <label>Group Name : </label>
-      <input class="form-control" type="text" name="saveNameGroup" value="">
+        <label>Contact ID : </label>
+      <input class="form-control" type="text" name="saveContacts_id" value="">
     </div>
-      <button type="submit" name="button" class="btn btn-default">Add New Group</button>
+    
+    <div class="form-group">
+      <label>Group ID : </label>
+    <input class="form-control" type="text" name="saveGroups_id" value="">
+  </div>
+      <button type="submit" name="button" class="btn btn-default">Add New Contact Group</button>
     </form>
   </div>
   
