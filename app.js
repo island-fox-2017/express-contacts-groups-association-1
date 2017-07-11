@@ -60,10 +60,26 @@ app.post('/contacts/update/:id', function(req, res) {
   res.redirect('/contacts')
 })
 
+
 app.get('/contacts/delete/:id', function(req, res, next){
   let id = req.params.id
-  db.run(`DELETE FROM Contacts WHERE id = ${id};`)
-  res.redirect('/contacts');
+  db.run(`DELETE FROM Contacts WHERE id = ${id}`, function (error, row) {
+    if (!error) {
+      db.run(`DELETE FROM contactgroup WHERE contact_id = ${id}`, function (error, row2) {
+        if (!error) {
+          db.run(`DELETE FROM profile WHERE contact_id = ${id}`, function (error, rows3) {
+            if (!error) {
+              db.run(`DELETE FROM address WHERE contact_id = ${id}`, function (error, rows4) {
+                if (!error) {
+                  res.redirect('/contacts');
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+  })
 })
 
 //========================================PROFILE============================================================//
@@ -260,4 +276,33 @@ app.post('/contactgroup', function(req, res) {
   res.redirect('/contactgroup')
 });
 
+app.get('/contactgroup/delete/:id', function(req, res, next){
+  let id = req.params.id
+  db.run(`DELETE FROM contactgroup WHERE id = ${id};`)
+  res.redirect('/contactgroup');
+})
+
 app.listen(3000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const sqlite3 = require('sqlite3').verbose();
+
+// class DbModel {
+//   constructor(filename) {
+//     this.connection = new sqlite3.Database(filename)
+//   }
+// }
+//
+// let dbModel = new DbModel('db/data.db')
+// console.log(dbModel);
