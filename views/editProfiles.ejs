@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+  <body>
+    <div class="container"><br/><br/>
+      <h2 align="center">Hi, Welcome to</h2>
+      <h3 align="center">Contact Group Application Center</h3>
+      <ul class="pager" role="tablist">
+      <li role="presentation" class="active"><a href="/">Home</a></li>
+      <li role="presentation"><a href="/contacts">Contact</a></li>
+      <li role="presentation"><a href="/groups">Group</a></li>
+      <li role="presentation"><a href="/contacts-groups">Contact Group</a></li>
+      <li role="presentation"><a href="/profiles">Profile</a></li>
+      <li role="presentation"><a href="/address">Address</a></li>
+    </ul>
+    </div>
+    
+      <div class="container">
+      <h3>Update Profile</h3>
+      <br>
+        <form class="form-inline" action="/profiles/edit/<%= dataProfile.id%>" method="post">
+        
+        <div class="form-group">
+          <label>Username : </label>
+          <input class="form-control" type="text" name="saveUsername" value="<%= dataProfile.username%>">
+        </div>
+        
+        <div class="form-group">
+          <label>Password : </label>
+          <input class="form-control" type="text" name="savePassword" value="<%= dataProfile.password%>">
+        </div>
+        
+        <div class="form-group">
+          <label>Name : </label>
+          <select name="saveContactID" class="form-control">
+            <option value="<%= dataProfile.Contact_id%>" selected><%= dataContact[0].name%></option>
+            
+            <% dataContact.forEach(contact => { %>
+              <option value="<%- contact.id%>"><%- contact.name%></option>
+            <% })%>
+          </select>
+        </div>  
+          
+        <button type="submit" name="" class="btn btn-default">Update</button>
+        </form>
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Contact</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+  <body>
+    
+    <div class="container"><br/><br/>
+      <h2 align="center">Hi, Welcome to</h2>
+      <h3 align="center">Contact Group Application Center</h3>
+      <ul class="pager" role="tablist">
+      <li role="presentation" class="active"><a href="/">Home</a></li>
+      <li role="presentation"><a href="/contacts">Contact</a></li>
+      <li role="presentation"><a href="/groups">Group</a></li>
+      <li role="presentation"><a href="/contacts-groups">Contact Group</a></li>
+      <li role="presentation"><a href="/profiles">Profile</a></li>
+      <li role="presentation"><a href="/address">Address</a></li>
+    </ul>
+    </div>
+    
+    <div class="container">
+    <h3>Update Contact</h3>
+    <br>
+    <form class="form-inline" action="/contacts/edit/<%=dataContact.id %>" method="post">
+  
+      
+      <div class="form-group">
+        <label>Name : </label>
+      <input class="form-control" type="text" name="saveName" value="<%= dataContact.name%>">
+    </div>
+    
+    <div class="form-group">
+      <label>Company : </label>
+        <input class="form-control" type="text" name="saveCompany" value="<%= dataContact.company%>">
+    </div>
+    
+    <div class="form-group">
+      <label>Phone Number : </label>
+      <input class="form-control" type="text" name="savePhone" value="<%= dataContact.telp_number%>">
+    </div>
+    
+    <div class="form-group">
+      <label>Email : </label>
+      <input class="form-control" type="text" name="saveEmail" value="<%= dataContact.email%>">
+    </div>
+
+      <button type="submit" name="" class="btn btn-default">Update Contact</button>
+    </form>
+  </div>
+    
+
+  </body>
+</html>

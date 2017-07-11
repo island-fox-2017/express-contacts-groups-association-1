@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  
+  <div class="container"><br/><br/>
+    <h2 align="center">Hi, Welcome to</h2>
+    <h3 align="center">Contact Group Application Center</h3>
+    <ul class="pager" role="tablist">
+    <li role="presentation" class="active"><a href="/">Home</a></li>
+    <li role="presentation"><a href="/contacts">Contact</a></li>
+    <li role="presentation"><a href="/groups">Group</a></li>
+    <li role="presentation"><a href="/contacts-groups">Contact Group</a></li>
+    <li role="presentation"><a href="/profiles">Profile</a></li>
+    <li role="presentation"><a href="/address">Address</a></li>
+  </ul>
+  </div>
+  
+  <div class="container">
+    <h3>Show Data Profile</h3>
+    <br>    
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID Profile</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Contact ID</th>
+        <th>Contact Name</th>
+        <th>Company</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data_profile.forEach(profile => { %>
+      <tr>
+        <td><%= profile.id%></td>
+        <td><%= profile.username%></td>
+        <td><%= profile.password%></td>
+        <td><%= profile.Contact_id%></td>
+        <td><%= profile.name%></td>
+        <td><%= profile.company%></td>
+        <td><%= profile.telp_number%></td>
+        <td><%= profile.email%></td>
+        <td><a href="/profiles/edit/<%=profile.id%>">Edit</a> || <a href="/profiles/delete/<%=profile.id%>" onclick="return confirm('Are you sure you want to delete this data?');">Delete</a></td>
+      </tr>
+      <% })%>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="container">
+<form class="form-inline" action="/profiles" method="post">
+  
+  <div class="form-group">
+    <label>Username : </label>
+    <input class="form-control" type="text" name="saveUsername" value="">
+</div>
+<div class="form-group">
+    <label>Password : </label>
+  <input class="form-control" type="text" name="savePassword" value="">
+</div>
+<div class="form-group">
+  <label>Name : </label>
+  <select name="saveContactID" class="form-control">
+    <% data_contact.forEach(contact => { %>
+    <option value="<%= contact.id%>" selected><%= contact.name%></option>
+      <% }) %>
+  </select>
+</div>
+
+  <button type="submit" name="button" class="btn btn-default">Add New Profile</button>
+</form>
+</div>
+
+</body>
+</html>

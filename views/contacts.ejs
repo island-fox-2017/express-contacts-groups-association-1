@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Contact</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+  <body>
+    
+    <div class="container"><br/><br/>
+      <h2 align="center">Hi, Welcome to</h2>
+      <h3 align="center">Contact Group Application Center</h3>
+      <ul class="pager" role="tablist">
+      <li role="presentation" class="active"><a href="/">Home</a></li>
+      <li role="presentation"><a href="/contacts">Contact</a></li>
+      <li role="presentation"><a href="/groups">Group</a></li>
+      <li role="presentation"><a href="/contacts-groups">Contact Group</a></li>
+      <li role="presentation"><a href="/profiles">Profile</a></li>
+      <li role="presentation"><a href="/address">Address</a></li>
+    </ul>
+    </div>
+    
+    <div class="container">
+      <h3>Show Data Contact</h3>
+      <br>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Company</th>
+          <th>Phone Number</th>
+          <th>E-Mail</th>
+          <th>Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data_contact.forEach(contact => { %>
+        <tr>
+          <td><%= contact.id %></td>
+          <td><%= contact.name%></td>
+          <td><%= contact.company%></td>
+          <td><%= contact.telp_number%></td>
+          <td><%= contact.email%></td>
+          <td><a href="/contacts/edit/<%=contact.id%>">Edit</a> || <a href="/contacts/delete/<%=contact.id%>" onclick="return confirm('Are you sure you want to delete this data?');">Delete</a> || <a href="/contactsDetail">Show Detail</a></td>
+        </tr>
+        <% })%>
+      </tbody>
+    </table>
+  </div>
+      
+      <div class="container">  
+    <form class="form-inline" action="/contacts" method="post">
+      <div class="form-group">  
+      <label>Name : </label>
+      <input class="form-control" type="text" name="saveName" value="">
+    </div>
+    <div class="form-group">
+      <label>Company : </label>
+      <input class="form-control" type="text" name="saveCompany" value="">
+    </div>
+    <div class="form-group">
+      <label>Phone Number : </label>
+       <input class="form-control" type="text" name="savePhone" value="">
+    </div>
+    <div class="form-group">
+      <label>Email : </label>
+      <input class="form-control" type="text" name="saveEmail" value="">
+    </div>
+    
+      <button type="submit" name="" class="btn btn-default">Add Contact</button>
+    </form>
+  </div>
+  </body>
+</html>
