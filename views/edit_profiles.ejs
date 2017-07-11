@@ -1,0 +1,15 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/style.css" ></link>
+</head>
+<body>
+  <form action="/profiles/edit/:id" method="post">
+    <input type="number" name="id" value="<%= datas[0].id %>">
+    <input type="text" name="username" placeholder="Input Your Username Here" value="<%= datas[0].username %>">
+    <input type="text" name="password" placeholder="Input Your Password Here" value="<%= datas[0].password %>">
+    <input type="number" name="contact_id" placeholder="Input The Contact ID Number Here" value="<%= datas[0].contact_id %>">
+    <input type="submit" value="Submit">
+  </form>
+  <h2><a href="/">Home</a></h2>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/style.css" ></link>
+</head>
+<body>
+  <form action="/groups/edit/:id" method="post">
+    <input type="hidden" name="id" value="<%= data[0].id %>">
+    <input type="text" name="name_of_group" placeholder="Input Your Group Name Here" value="<%= data[0].name_of_group %>">
+    <input type="submit" value="Submit">
+  </form>
+  <h2><a href="/">Home</a></h2>
+</body>
+</html>

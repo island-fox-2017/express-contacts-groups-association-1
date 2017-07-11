@@ -1,0 +1,40 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/style.css" ></link>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Contact ID</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <% datas.forEach(i => { %>
+    <tr>
+      <th><%= i.id %></th>
+      <th><%= i.username %></th>
+      <th><%= i.password %></th>
+      <th><%= i.contact_id %></th>
+      <th><a href=/profiles/edit/<%= i.id %>>Edit</a></th>
+      <th><a href=/profiles/delete/<%= i.id %>>Delete</a></th>
+    </tr>
+    <% }) %>
+  </table>
+  <form action="/profiles" method="post">
+    <input type="text" name="username" placeholder="Input Your Username Here">
+    <input type="text" name="password" placeholder="Input Your Password Here">
+    <select class="selectpciker" data-style="btn-info" name="contact_id">
+      <optgroup label="Select Name">
+        <% selectContact.forEach(i => { %>
+          <option value='<%= i.id %>'><%= i.name %></option>
+        <% }) %>
+      </optgroup>
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+  <h2><a href="/">Home</a></h2>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/style.css" ></link>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>Zip Code</th>
+      <th>Contact_id</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <% datas.forEach(i => { %>
+    <tr>
+      <th><%= i.id %></th>
+      <th><%= i.street %></th>
+      <th><%= i.city %></th>
+      <th><%= i.zip_code %></th>
+      <th><%= i.contact_id %></th>
+      <th><a href=/address/edit/<%= i.id %>>Edit</a></th>
+      <th><a href=/address/delete/<%= i.id %>>Delete</a></th>
+    </tr>
+    <% }) %>
+  </table>
+  <form action="/address" method="post">
+    <input type="text" name="street" placeholder="Input Your Street Here">
+    <input type="text" name="city" placeholder="Input Your City Here">
+    <input type="text" name="zip_code" placeholder="Input Your Zip Code Here">
+    <select class="selectpciker" data-style="btn-info" name="contact_id">
+      <optgroup label="Select Name">
+        <% selectContact.forEach(i => { %>
+          <option value="<%= i.id %>"><%= i.name %></option>
+        <% }) %>
+      </optgroup>
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+  <h2><a href="/">Home</a></h2>
+</body>
+</html>

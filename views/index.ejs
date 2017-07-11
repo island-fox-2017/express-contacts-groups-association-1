@@ -1,0 +1,53 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/style.css" ></link>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+  <div class="parallax-container">
+    <div class="parallax"><img src="http://www.thinkbelle.com/wp-content/uploads/2014/12/Screenshot-2014-12-08-11.10.44.png"></div>
+  </div>
+  <div class="carousel carousel-slider center" data-indicators="true">
+    <div class="carousel-item red white-text">
+      <h1>HOME</h1>
+      <p class="white-text">This is your first panel</p>
+    </div>
+    <div class="carousel-item amber white-text" href="/contacts">
+      <h1><a href="/contacts">Contacts</a></h1>
+      <p class="white-text">This is your second panel</p>
+    </div>
+    <div class="carousel-item green white-text" href="/groups">
+      <h1><a href="/groups">Groups</a></h1>
+      <p class="white-text">This is your third panel</p>
+    </div>
+    <div class="carousel-item yellow white-text" href="/profiles">
+      <h1><a href="/profiles">Profiles</a></h1>
+      <p class="white-text">This is your fourth panel</p>
+    </div>
+    <div class="carousel-item amber white-text" href="/address">
+      <h1><a href="/address">Address</a></h1>
+      <p class="white-text">This is your fourth panel</p>
+    </div>
+    <div class="carousel-item teal white-text" href="/contacts-groups">
+      <h1><a href="/contacts-groups">Contacts Groups</a></h1>
+      <p class="white-text">This is your fourth panel</p>
+    </div>
+  </div>
+  <!--jQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
+  </script>
+</body>
+</html>

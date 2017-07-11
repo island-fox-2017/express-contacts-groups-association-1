@@ -1,0 +1,83 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/style.css" ></link>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+  <div class="container">
+    <table class="centered striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Company</th>
+          <th>Telephone Number</th>
+          <th>Email</th>
+          <th>Groups</th>
+          <th bgcolor="teal">Profiles</th>
+          <th bgcolor="teal">Address</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% datas.forEach(i => { %>
+        <tr>
+          <th><%= i.id %></th>
+          <th><%= i.name %></th>
+          <th><%= i.company %></th>
+          <th><%= i.telp_number %></th>
+          <th><%= i.email %></th>
+          <th>
+            <% slice.forEach(j => {
+              if (i.id === j.id) { %>
+                <%= j.name_of_group %>,
+            <%  }
+          }) %>
+            <%= i.name_of_group %>
+          </th>
+          <th><a href=/profiles/<%= i.id %>>Profiles</a></th>
+          <th><a href=/address/<%= i.id %>>Address</a></th>
+          <th><a href=/contacts/edit/<%= i.id %>>Edit</a></th>
+          <th><a href=/contacts/delete/<%= i.id %>>Delete</a></th>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <div class="divider"></div>
+    <form action="/contacts" method="post">
+      <input type="text" name="name" placeholder="Input Your Name Here">
+      <input type="text" name="company" placeholder="Input Your Address Here">
+      <input type="text" name="telp_number" placeholder="Input Your Telephone Number Here">
+      <input type="text" name="email" placeholder="Input Your Email Here">
+      <a href="#!" class="btn waves-effect waves-teal"><input type="submit">></input></a>
+    </form>
+    <span>< Scroll To Browse ></span>
+    <div class="carousel">
+      <a class="carousel-item" href="/"><h2>Home</h2></a>
+      <a class="carousel-item" href="/groups"><h2>Groups</h2></a>
+      <a class="carousel-item" href="/profiles"><h2>Profiles</h2></a>
+      <a class="carousel-item" href="/address"><h2>Address</h2></a>
+      <a class="carousel-item" href="/contacts-groups"><h2>Contacts Groups</h2></a>
+    </div>
+
+  </div>
+  <!--jQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="/js/materialize.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $('.carousel').carousel();
+      $('.collapsible').collapsible();
+    });
+  </script>
+</body>
+</html>

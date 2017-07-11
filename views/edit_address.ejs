@@ -1,0 +1,16 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/style.css" ></link>
+</head>
+<body>
+  <form action="/address/edit/:id" method="post">
+    <input type="number" name="id" value="<%= datas[0].id %>">
+    <input type="text" name="street" placeholder="Input The Street Here" value="<%= datas[0].street %>">
+    <input type="text" name="city" placeholder="Input The City Here" value="<%= datas[0].city %>">
+    <input type="text" name="zip_code" placeholder="Input The Zip Code Here" value="<%= datas[0].zip_code %>">
+    <input type="number" name="contact_id" placeholder="Input The Contact ID Number Here" value="<%= datas[0].contact_id %>">
+    <input type="submit" value="Submit">
+  </form>
+  <h2><a href="/">Home</a></h2>
+</body>
+</html>
