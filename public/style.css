@@ -1,0 +1,35 @@
+/*table, th, td {
+   /*border: 1px solid black;
+   border-collapse: collapse;
+   border-bottom: 1px solid #ddd;
+}
+
+table {
+   border-collapse: collapse;
+}
+
+th {
+    height: 30px;
+}
+
+th, td {
+  padding: 10px;
+
+}
+*/
+
+table, td, th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  empty-cells: hide;
+}
+
+th, td {
+  padding: 8px;
+}
+
+tr:hover {background-color: #d1d1d1}

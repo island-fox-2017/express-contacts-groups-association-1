@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Contacts</title>
+    <link type="text/css" rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+
+    <!-- <%=JSON.stringify(contact_data)%> -->
+    <table border="1">
+      <tr>
+        <th> Contact ID </th>
+        <th> Name</th>
+        <th> Company</th>
+        <th> Phone Number</th>
+        <th> Email</th>
+      </tr>
+      <% contact_data.forEach(contact => { %>
+        <tr>
+          <td><%= contact.id %> </td>
+          <td><%= contact.name %></td>
+          <td><%= contact.company %></td>
+          <td><%= contact.telp_number %></td>
+          <td><%= contact.email %></td>
+          <td><a href="contacts/edit/<%= contact.id %>">edit</a></td>
+          <td><a href="contacts/delete/<%= contact.id %>">delete</a></td>
+          <td><a href="contacts/detail-profile/<%= contact.id %>">show profil</a></td>
+          <td><a href="contacts/detail-address/<%= contact.id %>">show address</a></td>
+        </tr>
+     <% }) %>
+    </table>
+    <br>
+    <br>
+    <form action="/contacts" method="post">
+      <input type = "text" name="nama" placeholder="Insert nama"></input>
+      <input type = "text" name="company_name" placeholder="Insert nama perusahan"></input>
+      <input type = "text" name="telp_num" placeholder="Insert nomor telepon"></input>
+      <input type = "text" name="email" placeholder="Insert alamat email"></input>
+      <button type="submit">Add Contact</button>
+    </form>
+    <br>
+    <br>
+    <a href="/">home</a>
+  </body>
+</html>

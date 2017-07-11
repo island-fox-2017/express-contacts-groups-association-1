@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Detail Profile</title>
+    <link type="text/css" rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+
+    <!-- <%=JSON.stringify(contact_data)%> -->
+    <table border="1">
+      <tr>
+        <th> ID </th>
+        <th> Name</th>
+        <th> Company</th>
+        <th> Phone Number</th>
+        <th> Email</th>
+        <th> Username</th>
+        <th> Password</th>
+        <th> Contact ID</th>
+      </tr>
+      <% contact_data.forEach(contact => { %>
+        <tr>
+          <td><%= contact.id %> </td>
+          <td><%= contact.name %></td>
+          <td><%= contact.company %></td>
+          <td><%= contact.telp_number %></td>
+          <td><%= contact.email %></td>
+          <td><%= contact.username %></td>
+          <td><%= contact.password %></td>
+          <td><%= contact.contact_id %></td>
+        </tr>
+
+     <% }) %>
+    </table>
+    <br>
+    <br>
+
+    <a href="/contacts">back</a>
+    <a href="/">home</a>
+  </body>
+</html>

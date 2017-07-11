@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Profile</title>
+    <link type="text/css" rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    <% profile_data.forEach(p => { %>
+    <form action="/profiles/edit/<%=p.id%>" method="post">
+      <br><br>
+      User Name : <input type="text" name="nama_user" value="<%= p.username%>"><br>
+      Password : <input type="password" name="pass" value="<%= p.password%>"><br>
+      <label>Pilih Contact</label><br>
+      <select name= "kontak_id">
+        <% contact_data.forEach(c => { %>
+        <option value="<%= c.id %>"><%= c.name %></option>
+        <% }) %>
+      </select><br><br>
+      <button type="submit" name="">Update</button>
+    </form>
+    <% }) %>
+
+    <a href="/contacts">contact</a>
+    <a href="/">home</a>
+
+  </body>
+</html>
