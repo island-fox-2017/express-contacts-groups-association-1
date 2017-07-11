@@ -10,7 +10,10 @@
     <h1>INFO KONTAK</h1>
     <table border = "1">
     <tr>
-      <th>ID</th>    
+      <th>ID</th>
+      <td>Username</td>
+      <td>Password</td>
+      <td>Contact_ID</td>
       <th>Nama</th>
       <th>Company</th>
       <th>Telepon</th>
@@ -21,6 +24,9 @@
     <%data_cont.forEach(dataShow => {%>
       <tr>
         <td><%=dataShow.id%></td>
+        <td><%=dataShow.username%></td>
+        <td><%=dataShow.password%></td>
+        <td><%=dataShow.contact_id%></td>
         <td><%=dataShow.name%></td>
         <td><%=dataShow.company%></td>
         <td><%=dataShow.telp_number%></td>

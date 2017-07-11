@@ -51,12 +51,12 @@ app.post("/home/profile/edit/:id",function(req, res) {
 //Detail
 app.get("/home/profile/contacts/:id", function(req, res) {
   db.all(`SELECT Data_Profile.id, Data_Profile.username,
-    Data_Profile.password, Data_Contact.name, Data_Contact.company,
+    Data_Profile.password,Data_Profile.contact_id, Data_Contact.name, Data_Contact.company,
     Data_Contact.telp_number, Data_Contact.email FROM Data_Profile
     JOIN Data_Contact ON Data_Profile.contact_id = Data_Contact.id
     WHERE Data_Profile.contact_id = ${req.params.id}`, function(err, db_Contact) {
     res.render("detail", {data_cont : db_Contact});
-    console.log(db_Contact);
+    // console.log(db_Contact);
   })
 })
 
