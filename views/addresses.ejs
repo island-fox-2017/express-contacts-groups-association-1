@@ -9,7 +9,7 @@
   <body>
     <center>
     <h1>Addresses</h1>
-    <table border="1" style="width:50%">
+    <table border="1" style="width:30%">
       <tr>
         <th>Id</th>
         <th>Street</th>
@@ -46,13 +46,16 @@
 
   Zip Code :<br>
   <input type="text" name="zip_code" value="">
-  <br>
+  <br><br>
 
-  Contact Id :<br>
-  <input type="text" name="contact_id" value="">
-  <br>
+  <select name="inputId">
+        <option value="">Choose your contact</option>
+        <% allAdd.forEach(contact => { %>
+          <option value="<%= contact.id %>"><%= contact.name %></option>
+        <% }) %>
+      </select>
 
-  <br>
+  <br><br>
   <input type="submit" value="Submit">
 </form>
 <br><br>
