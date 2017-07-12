@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit</title>
+  </head>
+  <!-- <link rel="stylesheet" href="/style.css"> -->
+  <!-- <link rel="stylesheet" href="/sesuatu.css"> -->
+  <body>
+    <%allG.forEach(function(isi){ %>
+    <form action="/contact/edit/<%=isi.id%>" method="post">
+
+      Name :<br>
+      <input type="text" name="name" value="<%=isi.name%>">
+      <br>
+
+      Company :<br>
+      <input type="text" name="company" value="<%=isi.company%>">
+      <br>
+
+      Telephone Number :<br>
+      <input type="text" name="telepon_number" value="<%=isi.telp_number%>">
+      <br>
+
+      Email :<br>
+      <input type="text" name="email" value = "<%= isi.email%>"
+      <br>
+
+  <br>
+  <input type="submit" value="Submit">
+</form>
+<%})%>
+  </body>
+</html>

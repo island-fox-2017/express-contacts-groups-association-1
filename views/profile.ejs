@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Profile</title>
+</head>
+<!-- <link rel="stylesheet" href="/style.css"> -->
+<!-- <link rel="stylesheet" href="/sesuatu.css"> -->
+
+<body>
+  <center>
+    <h1>PROFILE</h1>
+    <table border="1" style="width:30%">
+      <tr>
+        <th>No.id</th>
+        <th>Username</th>
+        <th>Facebook_username</th>
+        <th>Google_username</th>
+        <th>Contact_id</th>
+        <th>contact name</th>
+        <th>Company</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
+      </tr>
+      <%var i = 1%>
+        <%allP.forEach(function(isi){ %>
+          <tr>
+            <td>
+              <%=i%>
+                <%i+=1%>
+            </td>
+            <td>
+              <%=isi.username%>
+            </td>
+            <td>
+              <%=isi.facebook_username%>
+            </td>
+            <td>
+              <%=isi.google_username%>
+            </td>
+            <td>
+              <%=isi.contact_id%>
+            </td>
+            <td>
+              <%=isi.name%>
+            </td>
+            <td>
+              <%=isi.company%>
+            </td>
+            <td>
+              <%=isi.email%>
+            </td>
+            <td> <a href="/profiles/edit/<%= isi.id%>">Edit</a> </td>
+            <td> <a href="/profiles/delete/<%= isi.id%>">Delete</a> </td>
+          </tr>
+          <%})%>
+    </table>
+    <br><br>
+
+    <form action="/profiles" method="post">
+
+      User_Name :<br>
+      <input type="text" name="username" value="">
+      <br> Facebook_username :<br>
+      <input type="text" name="facebook_username" value="">
+      <br> Google_username :<br>
+      <input type="text" name="google_username" value="">
+      <br> Contact_id :<br>
+
+      <select name="inputId">
+        <%allC.forEach(function(isi){ %>
+        <option value="<%=isi.id%>"><%=isi.name%></option>
+        <%})%>
+      </select>
+
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+    <br><br>
+    <a href="/"><b>Home</b></a>
+
+  </center>
+
+</body>
+
+</html>

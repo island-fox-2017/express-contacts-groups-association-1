@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Profile</title>
+  </head>
+  <!-- <link rel="stylesheet" href="/style.css"> -->
+  <!-- <link rel="stylesheet" href="/sesuatu.css"> -->
+  <body>
+    <%allP.forEach(function(isi){ %>
+    <form action="/profiles/edit/<%=allP[0].id%>" method="post">
+
+      Username :<br>
+      <input type="text" name="username" value="<%=allP[0].username%>">
+      <br>
+
+      Facebook_username :<br>
+      <input type="text" name="facebook_username" value="<%=allP[0].facebook_username%>">
+      <br>
+
+      Google_username :<br>
+      <input type="text" name="google_username" value="<%=allP[0].google_username%>">
+      <br>
+
+      Contact_id :<br>
+      <input type="text" name="contact_id" value="<%=allP[0].contact_id%>">
+      <br>
+      
+  <br>
+  <input type="submit" value="Submit">
+</form>
+<%})%>
+  </body>
+</html>
