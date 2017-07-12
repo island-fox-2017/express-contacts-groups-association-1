@@ -14,7 +14,7 @@
           <input type="text" name="age_profile" value="<%=dataprofile[0].age%>">
           <p>Contact_id:  </p>
           <select name = "contact_id" >
-             <option value = "<%=dataprofile[0].contact_id %>" selected> <%=dataCon[(dataprofile[0].contact_id-1)].name %>
+             <option value = "<%=dataprofile[0].contact_id %>" selected> <%=dataCon[(dataprofile[0].contact_id-1)].nameOwner %>
              </option>
              <% dataCon.forEach( cont => { %>
              <option value ="<%= cont.id %>">
